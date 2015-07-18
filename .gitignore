@@ -2,6 +2,9 @@
 tmp/
 vendor/
 
+# ############ Sass
+.sass-cache/
+
 # ############ Node (npm)
 # Logs
 logs
