@@ -50,14 +50,14 @@ module.exports = function(grunt) {
     usebanner: {
       build: {
         options: {
-          position: 'top',
-          banner: '<%= meta.banner %>',
-          linebreak: true
+          position:   'top',
+          banner:     '<%= meta.banner %>',
+          linebreak:  true
         },
         files: {
           src: [
-            '<%= build_dir %>/js/*.js',
-            '<%= build_dir %>/css/*.css',
+            '<%= build_dir %>/static/*.js',
+            '<%= build_dir %>/static/*.css',
           ]
         }
       }
@@ -95,12 +95,22 @@ module.exports = function(grunt) {
               '<%= vendor_files.fonts %>',
               '<%= app_files.fonts %>'
             ],
-            dest: '<%= build_dir %>/fonts/',
+            dest: '<%= build_dir %>/static/fonts/',
             cwd: '.',
             expand: true,
             flatten: true,
           }
        ]
+      },
+      build_images: {
+        files: [
+          {
+            src: [ '**' ],
+            dest: '<%= build_dir %>/static/images/',
+            cwd: 'src/images',
+            expand: true
+          }
+        ]
       },
       build_html: {
         files: [
@@ -112,16 +122,6 @@ module.exports = function(grunt) {
             cwd: '.',
             expand: true,
             flatten: true
-          }
-        ]
-      },
-      build_images: {
-        files: [
-          {
-            src: [ '**' ],
-            dest: '<%= build_dir %>/images/',
-            cwd: 'src/images',
-            expand: true
           }
         ]
       }
@@ -294,21 +294,6 @@ module.exports = function(grunt) {
       },
 
       /**
-       * When our Joomla config files change, we want to copy them to build
-       */
-      joomlafiles: {
-        files: [ '<%= app_files.joomlafiles %>' ],
-        tasks: [
-          'copy:build_joomlafiles',
-          'bake:build_configfiles',
-          'compress:build',
-        ],
-        options: {
-          livereload: true,
-        }
-      },
-
-      /**
        * When images source change, we wnat to copy them
        */
       images: {
@@ -380,13 +365,9 @@ module.exports = function(grunt) {
     'uglify',                    // minified js/prod.js
 
     'copy:build_fonts',          // compile vendor_file.fonts to build/fonts
-    'copy:build_php',            // copy PHP files
+    'copy:build_html',           // copy jinja2 html templates
     'copy:build_images',         // copy images folder
-    'copy:build_language',       // copy language folder
-    'copy:build_modules',        // copy html folder containing joomla modules
-    'copy:build_joomlafiles',    // copy required WordPress files
-    'usebanner:build',           // adding banner to CSS and JS files
-    'bake:build_configfiles',    //
+    // 'usebanner:build'            // adding banner to CSS and JS files
   ]);
 
   grunt.registerTask( 'dev', [
