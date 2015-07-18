@@ -19,7 +19,8 @@ module.exports = {
   app_files: {
     js:       [ 'src/js/**/*.js', '!src/js/**/*.spec.js', '!src/assets/**/*.js' ],
     coffee:   [ 'src/coffee/**/*.coffee', '!src/coffee/**/*.spec.coffee' ],
-    html:     [ 'src/templates/*.html' ]
+    fonts:    [ 'src/fonts/**/*' ], // Additional fonts that aren't store into vendor libraries
+    html:     [ 'src/templates/**/*.html' ]
   },
 
   vendor_files: {
@@ -27,13 +28,13 @@ module.exports = {
       'vendor/jquery/dist/jquery.js',
       'vendor/jquery.easing/js/jquery.easing.js',
       'vendor/lodash/lodash.js',
-      'vendor/bootstrap-sass/assets/javascripts/bootstrap.js',
+      'vendor/bootstrap-sass-official/assets/javascripts/bootstrap.js',
     ],
     css: [
     ],
     fonts: [
       'vendor/font-awesome-sass/assets/fonts/font-awesome/*',
-      'vendor/bootstrap-sass/assets/fonts/bootstrap/*'
+      'vendor/bootstrap-sass-official/assets/fonts/bootstrap/*'
     ],
     assets: [
     ]
