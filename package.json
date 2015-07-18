@@ -1,0 +1,40 @@
+{
+  "name": "egelance-pelican-theme",
+  "version": "0.0.1",
+  "description": "Simply, minimalistic and modern pelican theme.",
+  "main": "Gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/egel/egelance-pelican-theme.git"
+  },
+  "keywords": [
+    "egelance",
+    "pelican",
+    "theme"
+  ],
+  "author": "Maciej Sypień",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/egel/egelance-pelican-theme/issues"
+  },
+  "homepage": "https://github.com/egel/egelance-pelican-theme",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bake": "^0.3.12",
+    "grunt-banner": "^0.2.3",
+    "grunt-concat-css": "^0.3.1",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-compress": "^0.10.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-cssmin": "^0.12.3",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-sass": "^0.8.1",
+    "grunt-contrib-uglify": "^0.5.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "matchdep": "^0.3.0"
+  }
+}
