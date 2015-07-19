@@ -88,6 +88,17 @@ module.exports = function(grunt) {
      * `build_dir`, and then to copy the assets to `compile_dir`.
      */
     copy: {
+      build_html5shiv: {
+        files: [
+          {
+            src: [ 'vendor/html5shiv/dist/html5shiv.min.js' ],
+            dest: '<%= build_dir %>/static/',
+            cwd: '.',
+            expand: true,
+            flatten: true,
+          }
+       ]
+      },
       build_fonts: {
         files: [
           {
@@ -115,13 +126,10 @@ module.exports = function(grunt) {
       build_html: {
         files: [
           {
-            src: [
-              '<%= app_files.html %>'
-            ],
+            src: [ '**' ],
             dest: '<%= build_dir %>/templates/',
-            cwd: '.',
-            expand: true,
-            flatten: true
+            cwd: 'src/templates/<%= project_subtheme_name %>',
+            expand: true
           }
         ]
       }
@@ -141,7 +149,7 @@ module.exports = function(grunt) {
           '<%= vendor_files.js %>',
           '<%= app_files.js %>'
         ],
-        dest: '<%= build_dir %>/static/production.js'
+        dest: '<%= build_dir %>/static/js/production.js'
       },
 
       build_css: {
@@ -150,7 +158,7 @@ module.exports = function(grunt) {
           '<%= tmp_dir %>/css/*.css',
           '<%= vendor_files.css %>',
         ],
-        dest: '<%= build_dir %>/static/style.css'
+        dest: '<%= build_dir %>/static/css/style.css'
       }
     },
 
@@ -175,7 +183,7 @@ module.exports = function(grunt) {
       },
       target: {
         files: {
-          '<%= build_dir %>/static/style.css': '<%= build_dir %>/static/style.css'
+          '<%= build_dir %>/static/css/style.css': '<%= build_dir %>/static/css/style.css'
         }
       }
     },
@@ -256,7 +264,7 @@ module.exports = function(grunt) {
        * plugin should auto-detect.
        */
       options: {
-        livereload: 12345, //true,
+        livereload: 789789,
       },
 
       /**
@@ -264,33 +272,23 @@ module.exports = function(grunt) {
        * your Gruntfile changes, it will automatically be reloaded!
        */
       unitjs: {
-        files: [
-          '<%= app_files.unitjs %>'
-        ],
+        files: [ '<%= app_files.unitjs %>' ],
         tasks: [
           'jshint:unitjs',
           'build',
           'compress:build',
-        ],
-        options: {
-          livereload: false,
-        }
+        ]
       },
 
       /**
        * When our template source files change, we want to copy them to build
        */
       html: {
-        files: [
-          '<%= app_files.html %>'
-        ],
+        files: [ 'src/templates/<%= project_subtheme_name =>/**/*.html' ],
         tasks: [
           'copy:build_html',
           'compress:build',
-        ],
-        options: {
-          livereload: true,
-        }
+        ]
       },
 
       /**
@@ -301,10 +299,7 @@ module.exports = function(grunt) {
         tasks: [
           'copy:build_images',
           'compress:build',
-        ],
-        options: {
-          livereload: true,
-        }
+        ]
       },
 
       /**
@@ -320,10 +315,7 @@ module.exports = function(grunt) {
           'concat:build_js',
           'uglify:build',
           'compress:build',
-        ],
-        options: {
-          livereload: true
-        }
+        ]
       },
 
       /**
@@ -334,7 +326,12 @@ module.exports = function(grunt) {
           'src/**/*.sass',
           'src/**/*.scss'
         ],
-        tasks: [ 'sass:build', 'concat:build_css', 'cssmin', 'compress:build', ]
+        tasks: [
+          'sass:build',
+          'concat:build_css',
+          'cssmin',
+          'compress:build',
+        ]
       },
     }
 
@@ -367,18 +364,11 @@ module.exports = function(grunt) {
     'copy:build_fonts',          // compile vendor_file.fonts to build/fonts
     'copy:build_html',           // copy jinja2 html templates
     'copy:build_images',         // copy images folder
+    'copy:build_html5shiv',      // copy js file compatibiliy with older browsers
     // 'usebanner:build'            // adding banner to CSS and JS files
   ]);
 
-  grunt.registerTask( 'dev', [
-    'build',
-    'watch',
-  ]);
-
-  grunt.registerTask( 'zip', [
-    'build',
-    'compress:build',
-  ]);
+  grunt.registerTask( 'zip', [ 'build', 'compress:build' ]);
 
   /**
    * The default task is to build and compile.
