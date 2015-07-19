@@ -88,17 +88,6 @@ module.exports = function(grunt) {
      * `build_dir`, and then to copy the assets to `compile_dir`.
      */
     copy: {
-      build_html5shiv: {
-        files: [
-          {
-            src: [ 'vendor/html5shiv/dist/html5shiv.min.js' ],
-            dest: '<%= build_dir %>/static/',
-            cwd: '.',
-            expand: true,
-            flatten: true,
-          }
-       ]
-      },
       build_fonts: {
         files: [
           {
@@ -132,7 +121,32 @@ module.exports = function(grunt) {
             expand: true
           }
         ]
-      }
+      },
+
+      // Plugins
+      build_plugins: {
+        files: [
+          {
+            src: [ '**' ],
+            dest: '<%= build_dir %>/static/plugins/',
+            cwd: 'src/plugins',
+            expand: true
+          }
+        ]
+      },
+
+      // Additional Libraries
+      build_html5shiv: {
+        files: [
+          {
+            src: [ 'vendor/html5shiv/dist/html5shiv.min.js' ],
+            dest: '<%= build_dir %>/static/',
+            cwd: '.',
+            expand: true,
+            flatten: true,
+          }
+       ]
+      },
     },
 
     /**
@@ -284,7 +298,7 @@ module.exports = function(grunt) {
        * When our template source files change, we want to copy them to build
        */
       html: {
-        files: [ 'src/templates/<%= project_subtheme_name =>/**/*.html' ],
+        files: [ 'src/templates/**/*.html' ],
         tasks: [
           'copy:build_html',
           'compress:build',
@@ -364,6 +378,7 @@ module.exports = function(grunt) {
     'copy:build_fonts',          // compile vendor_file.fonts to build/fonts
     'copy:build_html',           // copy jinja2 html templates
     'copy:build_images',         // copy images folder
+    'copy:build_plugins',
     'copy:build_html5shiv',      // copy js file compatibiliy with older browsers
     // 'usebanner:build'            // adding banner to CSS and JS files
   ]);
