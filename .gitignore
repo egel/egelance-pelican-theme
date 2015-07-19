@@ -1,6 +1,8 @@
 # ############# Project files/directories
 tmp/
 vendor/
+bin/
+build/
 
 # ############ Sass
 .sass-cache/
