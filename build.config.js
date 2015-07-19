@@ -17,10 +17,10 @@ module.exports = {
   project_subtheme_name: 'official',
 
   app_files: {
+    unitjs:   [ 'Gruntfile.js', 'build.config.js' ],
     js:       [ 'src/js/**/*.js', '!src/js/**/*.spec.js', '!src/assets/**/*.js' ],
     coffee:   [ 'src/coffee/**/*.coffee', '!src/coffee/**/*.spec.coffee' ],
-    fonts:    [ 'src/fonts/**/*' ], // Additional fonts that aren't store into vendor libraries
-    html:     [ 'src/templates/**/*.html' ]
+    fonts:    [ 'src/fonts/**/*' ] // Additional fonts that aren't store into vendor libraries
   },
 
   vendor_files: {
