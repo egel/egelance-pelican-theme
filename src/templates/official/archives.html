@@ -11,13 +11,37 @@
 
 {% block content %}
     <section id="content">
-        <h1>Archives for {{ SITENAME }}</h1>
+        <h1>Blog Archives</h1>
         <div id="archives">
-            {% for article in dates %}
-                <p>
-                    <span class="categories-timestamp"><time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time></span>
-                    <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}{% if article.subtitle %} - {{ article.subtitle }}{% endif %}</a>
-                </p>
+            {% for year, date_year in dates|groupby('date.year')|sort(reverse=NEWEST_FIRST_ARCHIVES) %}
+                <div class="row">
+                    <div class="col-sm-1">{{ year }}</div>
+                    <div class="col-sm-11">
+                        {% for month, articles in date_year|groupby('date.month')|sort(reverse=NEWEST_FIRST_ARCHIVES) %}
+                            {% for article in articles %}
+                                <article>
+                                    <div class="row">
+                                        <div class="col-sm-1">
+                                            <time datetime="{{ article.date }}" pubdate>
+                                                <span class="month">{{ article.date.strftime('%B')[:3] }}</span>
+                                                <span class="day">{{ article.date.strftime('%d') }}</span>
+                                            </time>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+                                            <footer>
+                                                <span class="categories">posted in
+                                                    <a class='category' href='{{ SITEURL }}/{{ article.category.url }}'>{{ article.category }}</a>
+                                                    {% if article.tags %} &middot; {% endif %} {% include 'includes/taglist.html' %}
+                                                </span>
+                                            </footer>
+                                        </div>
+                                    </div>
+                                </article>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
             {% endfor %}
         </div>
     </section>

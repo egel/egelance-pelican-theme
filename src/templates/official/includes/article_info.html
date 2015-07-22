@@ -1,7 +1,6 @@
-<footer class="post-info">
-    <span class="label label-default">Date</span>
+<div class="post-info">
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }}</time>
+        <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
     </span>
     {% if SHOW_DATE_MODIFIED %}
         {% if article.modified %}
@@ -29,7 +28,7 @@
         </span>
     {% endif %}
 
-    {% include 'includes/taglist.html' %}
+    {% if article.tags %}&middot;{% endif %} {% include 'includes/taglist.html' %}
     {% import 'includes/translations.html' as translations with context %}
     {{ translations.translations_for(article) }}
-</footer><!-- /.post-info -->
+</div><!-- /.post-info -->
