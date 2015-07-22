@@ -1,9 +1,10 @@
 /**
  *  Import external fonts
  */
-@import url(http://fonts.googleapis.com/css?family=Ubuntu&subset=cyrillic-ext,latin-ext)
-@import url(http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext)
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,cyrillic-ext,latin-ext)
+
+@import url(http://fonts.googleapis.com/css?family=Lobster+Two)
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif)
+
 
 // staged
 // not used but could help later
@@ -33,27 +34,11 @@ $theme-emerald:           #53BF83
 /********************************
  * Mixins
  */
-@mixin font-lato
-  font-family: 'Lato', sans-serif
+@mixin font-lobster
+  font-family: 'Lobster Two', cursive
 
-@mixin font-ubuntu
-  font-family: 'Ubuntu', sans-serif
-
-@mixin font-opensans-300
-  font-family: 'Open Sans', sans-serif
-  font-weight: 300 !important
-
-
-// staged
-@mixin font-roboto
-  font-family: 'Roboto', sans-serif
-  font-weight: 300 !important
-
-@mixin font-dosis
-  font-family: 'Dosis', sans-serif
-
-@mixin font-titillium
-  font-family: 'Titillium Web', sans-serif
+@mixin font-droid
+  font-family: 'Droid Serif', serif
 
 
 /******************************************************************************
@@ -95,13 +80,14 @@ $link-hover-color:      darken($link-color, 15%)
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif !default
+$font-family-sans-serif:  Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif !default
 $font-family-serif:       Georgia, "Times New Roman", Times, serif !default
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default
 $font-family-base:        $font-family-sans-serif !default
 
 $font-size-base:          18px
+$font-size-bigger:        ceil(($font-size-base * 1.9)) // ~18px
 $font-size-big:           ceil(($font-size-base * 1.5)) // ~18px
 $font-size-large:         ceil(($font-size-base * 1.25)) // ~18px
 $font-size-small:         ceil(($font-size-base * 0.85)) // ~12px
@@ -112,7 +98,7 @@ $font-size-small:         ceil(($font-size-base * 0.85)) // ~12px
 //##
 
 // Basics of a navbar
-$navbar-height:                    80px
+$navbar-height:                    50px
 
 $navbar-default-color:             #777
 $navbar-default-bg:                #fff
@@ -158,13 +144,38 @@ $logo_padding:  7px
 $header-top-height: 25px
 $header-top-bottom-padding: ($header-top-height - $line-height-base * $font-size-base)/2 +1
 
-$navbar-brand-font-size:  $font-size-big
+$navbar-brand-font-size:  $font-size-bigger
 $navbar-brand-padding:    15px
 $navbar-list-padding:     ($navbar-height - $line-height-base * $font-size-base)/2
 
 $footer-height: 90px
 
 $middle-sections-padding: 30px
+
+/******************************************************************************
+ *  Mixins (Local)
+ */
+@mixin menu-link-visited
+  background: transparent
+  text-decoration: none !important
+  color: lighten($gray-dark, 30%) // $brand-primary
+
+@mixin menu-hover-active-focus
+  text-decoration: none !important
+  background: transparent
+  color: lighten($theme-yellow, 30%) !important // $brand-primary
+
+@mixin link-visited
+  background: transparent
+  text-decoration: none !important
+  color: lighten($gray-dark, 18%)
+
+@mixin hover-active-focus
+  text-decoration: none !important
+  background: transparent
+  color: lighten($gray-dark, 10%)
+
+
 
 /******************************************************************************
  *  Body override
@@ -198,36 +209,39 @@ body
 
 
 
-
 /**
  *  Adjust for all elements
  */
 // ----------------------------------------------------------------------------
 h1, h2, h3, h4, h5, h6
-  @include font-opensans-300
-  color:        $gray-dark
-  font-weight:  normal !important
+  @include font-droid
+  color:          $gray-dark
+  font-weight:    normal !important
+  margin-bottom:  0
+
+  a
+    &:link, &:visited
+      @include link-visited
+
+    &:hover, &:active //, &:focus
+      @include hover-active-focus
+      text-decoration: underline !important
 
 h1
-  text-transform: uppercase
-  font-size: 48px
+  font-size: 40px
 
 h2
-  text-transform: uppercase
-  font-size: 38px
+  font-size: 32px
 
 h3
-  text-transform: uppercase
-  font-size: 28px
+  font-size: 26px
 
 h1.page-header,
 h2.page-header,
 h3.page-header
   text-align:     center !important
   margin:         0
-  // padding-top:    50px
   border:         none
-
 
 
 
@@ -273,9 +287,13 @@ hr.main-separator
   border-color:   $brand-primary
   border-width:   3px
 
+.current-date
+  font-family: $font-family-serif
 
 .display-none
   display: none !important
+
+
 
 /**
  * Custom button class
@@ -300,9 +318,8 @@ hr.main-separator
  */
 // ----------------------------------------------------------------------------
 .navbar-brand
-  @include font-lato
+  @include font-lobster
   font-size:        $navbar-brand-font-size
-  text-transform:   uppercase
   padding:          $navbar-brand-padding
   float:            left
   min-width:        360px
@@ -314,47 +331,20 @@ hr.main-separator
     display:        inline
     float:          left
 
-  .text-primary
-    font-size:  70%
-    display:    block
-    color:      darken($theme-bone, 20%)
 
-    > .prefix
-      text-transform: lowercase
-      font-size: 85%
-
-
-  .text-secondary
-    font-size:  60%
-    color:      darken($theme-bone, 40%)
-
-
-
-
-@mixin link-visited
-  background: transparent
-  text-decoration: none !important
-  color: lighten($gray-dark, 30%) // $brand-primary
-
-@mixin hover-active-focus
-  text-decoration: none !important
-  background: rgba(0, 0, 0, .4) !important
-  color: lighten($theme-yellow, 30%) !important // $brand-primary
-
-.navbar-custom
+#navbar
   margin-bottom: 0px
-  background-color: rgba(0, 0, 0, .7)
+  background-color: transparent
   border: none
 
 
-  ul.nav.navbar-nav
-    > li.active
+  ul.nav
+    > li.active, li.selected
       > a, a.active
         @include hover-active-focus
 
     > li
       > a
-        @include font-lato
         font-size:        14px
         font-weight:      bold
         text-transform:   uppercase
@@ -369,10 +359,12 @@ hr.main-separator
           @include hover-active-focus
 
 
-  .top-nav-collapse
-    padding: 0
-    border-bottom: 1px solid rgba(255,255,255,.3)
-    background: #000
+nav.navbar
+  margin-bottom:  0
+  margin-top:     20px
+  padding-bottom: 20px
+  border: none
+  border-bottom: 2px dotted #eee
 
 #master-container
   margin-top: $navbar-height/2
@@ -398,7 +390,7 @@ hr.main-separator
 @media (max-width: $screen-sm-min)
 
   .navbar-brand
-    @include font-lato
+    @include font-lobster
     font-size:        $navbar-brand-font-size
     text-transform:   uppercase
     padding-left:     7px
@@ -577,7 +569,7 @@ hr.main-separator
 
 
   .main-text
-    @include font-ubuntu
+    @include font-droid
     padding-bottom: 20px
     font-size:      1.6em
 
@@ -585,78 +577,13 @@ hr.main-separator
     padding-bottom: 20px
     text-align:     justified
 
-
-/**
- * Our practice
- */
-// -----------------------------------------------------------------------------
-#our-practice
-  @include page-default
-
-  /* Small devices (phone, 480px and down) */
-  @media (max-width: $screen-xs-min)
-    padding: 10px 0 0 0
-
-  > .container
-    @include page-default-container
-
-
-/**
- * Applicants
- */
-// -----------------------------------------------------------------------------
-#applicants
-  @include page-default
-
-  /* Small devices (phone, 480px and down) */
-  @media (max-width: $screen-xs-min)
-    padding: 10px 0 0 0
-
-  > .container
-    @include page-default-container
-
-
-/**
- * Legal counsel
- */
-// -----------------------------------------------------------------------------
-#legal-counsel
-  @include page-default
-
-  /* Small devices (phone, 480px and down) */
-  @media (max-width: $screen-xs-min)
-    padding: 10px 0 0 0
-
-  > .container
-    @include page-default-container
-
-
-/**
- * Contact
- */
-// ----------------------------------------------------------------------------
-#contact
-  @include page-default
-
-  /* Small devices (phone, 480px and down) */
-  @media (max-width: $screen-xs-min)
-    padding: 10px 0 0 0
-
-  > .container
-    @include page-default-container
-
-#gmap3-google-map
-  height:   400px
-  width:    auto
-  background-color: transparent
-
 /**
  * Footer section
  */
 // ----------------------------------------------------------------------------
 footer
-  background:     $gray-light
-  color:          #f4f4f4
+  background:     transparent
+  color:          #262626
   bottom:         0
   width:          100%
   height:         $footer-height
