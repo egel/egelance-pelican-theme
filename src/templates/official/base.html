@@ -13,14 +13,14 @@
 
     {# Favicons are a touchy subject. For reasoning for the following code, see: stackoverflow.com/a/23851464/872397 #}
     {% if FAVICON %}
-    <!-- <link href="{{ SITEURL }}/{{ FAVICON }}" rel="icon"> -->
-    <link rel="shortcut icon" href="blog.egel.pl/wp-content/themes/TheEgelBlogTemplate/images/favicon.png">
+        <!-- <link href="{{ SITEURL }}/{{ FAVICON }}" rel="icon"> -->
+        <link rel="shortcut icon" href="blog.egel.pl/wp-content/themes/TheEgelBlogTemplate/images/favicon.png">
     {% endif %}
     {% if FAVICON_IE %}
-    <!--[if IE]><link rel="shortcut icon" href="{{ SITEURL }}/{{ FAVICON_IE }}"><![endif]-->
+        <!--[if IE]><link rel="shortcut icon" href="{{ SITEURL }}/{{ FAVICON_IE }}"><![endif]-->
     {% endif %}
     {% if TOUCHICON %}
-    <link rel="apple-touch-icon" href="{{ SITEURL }}/{{ TOUCHICON }}">
+        <link rel="apple-touch-icon" href="{{ SITEURL }}/{{ TOUCHICON }}">
     {% endif %}
 
     {% block canonical_rel %}{% endblock %}
@@ -58,12 +58,10 @@
     <link href="{{ SITEURL }}/theme/css/pygments/{{ PYGMENTS_STYLE|default('native') }}.css" rel="stylesheet">
 
     {% if FEED_ALL_ATOM %}
-        <link href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate"
-              title="{{ SITENAME }} ATOM Feed"/>
+        <link href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed"/>
     {% endif %}
     {% if FEED_ALL_RSS %}
-        <link href="{{ SITEURL }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate"
-              title="{{ SITENAME }} RSS Feed"/>
+        <link href="{{ SITEURL }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed"/>
     {% endif %}
 
 </head>
@@ -85,7 +83,7 @@
               </div>
               <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    {% if 'tipue_search' in PLUGINS %}
+                    <!-- {% if 'tipue_search' in PLUGINS %}
                     <li>
                         <span>
                             <form class="navbar-search" action="/search.html">
@@ -93,7 +91,7 @@
                             </form>
                         </span>
                     </li>
-                    {% endif %}
+                    {% endif %} -->
 
                     <li {%- if output_file == "index.html" %} class="selected"{% endif %}><a href="{{ SITEURL }}">Home</a></li>
 
@@ -117,6 +115,16 @@
     <div class="container">
         <div class="row">
             {% if not HIDE_SIDEBAR or ABOUT_ME %}
+            <div class="col-sm-9">
+            {% else %}
+            <div class="col-lg-12">
+            {% endif %}
+
+            {% block breadcrumbs %}{% endblock %}
+            {% block content %}{% endblock %}
+            </div>
+
+            {% if not HIDE_SIDEBAR or ABOUT_ME %}
             <div class="col-sm-3" id="sidebar">
                 {% if ABOUT_ME %}
                     {% include 'includes/aboutme.html' %}
@@ -127,16 +135,6 @@
                 {% endif %}
             </div>
             {% endif %}
-
-            {% if not HIDE_SIDEBAR or ABOUT_ME %}
-            <div class="col-sm-9">
-            {% else %}
-            <div class="col-lg-12">
-            {% endif %}
-
-            {% block breadcrumbs %}{% endblock %}
-            {% block content %}{% endblock %}
-            </div>
         </div>
     </div>
     {% include 'includes/footer.html' %}
