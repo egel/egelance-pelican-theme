@@ -1,5 +1,5 @@
 # The Egelance Pelican Theme
-Simple, minimalistic, well readable [pelican][pelican_official_site] theme.
+Modern, minimalistic and well readable theme for [Pelican][pelican_official_site], Python Static Files Generator.
 
 
 ## Dowloading theme
