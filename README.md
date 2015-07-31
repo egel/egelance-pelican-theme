@@ -1,11 +1,13 @@
 # The Egelance Pelican Theme
-Simple, minimalistic, welli readble [pelican][pelican_official_site] theme.
+Simple, minimalistic, well readable [pelican][pelican_official_site] theme.
 
 
 ## Dowloading theme
-To download and install just theme only, then go to `bin/` folder to download archive,
-unpack to `<pelican-site>/theme/egelance`,
-set  :)
+To download and install just theme only, then go to `bin/` folder to download the archive,
+unpack it to `<pelican-site>/theme/egelance`,
+add `THEME="theme/egelance"` to your **pelicanconf.py** file,
+and compile your site `pelican content --autoreload`
+
 
 ## Development
 
@@ -37,7 +39,9 @@ then instal and bulid project:
       && bower install \
       grunt watch
 
-> You can also link fresh build to your pelican theme folder. To do so just:
+> You can also link fresh build of theme to your pelican theme folder.
+>
+> To do so just:
 > 1. go througth development proces then build project with command: `grunt`
 > 2. Link theme to your site:
 >     ln -s <path to egelance repository>/build <path to pelican site>/theme/egelance
