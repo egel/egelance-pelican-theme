@@ -4,6 +4,7 @@
 
 @import url(http://fonts.googleapis.com/css?family=Lobster+Two)
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif)
+@import url(http://fonts.googleapis.com/css?family=Halant)
 
 
 // staged
@@ -39,6 +40,13 @@ $theme-emerald:           #53BF83
 
 @mixin font-droid
   font-family: 'Droid Serif', serif
+
+@mixin font-roboto
+  font-family: 'Halant', serif
+
+@mixin font-roboto-bold
+  font-family: 'Roboto', sans-serif
+  font-weight: 700
 
 
 /******************************************************************************
@@ -80,16 +88,16 @@ $link-hover-color:      darken($link-color, 15%)
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:  Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif !default
+$font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif !default
 $font-family-serif:       Georgia, "Times New Roman", Times, serif !default
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default
 $font-family-base:        $font-family-sans-serif !default
 
-$font-size-base:          18px
 $font-size-bigger:        ceil(($font-size-base * 1.9)) // ~18px
 $font-size-big:           ceil(($font-size-base * 1.5)) // ~18px
 $font-size-large:         ceil(($font-size-base * 1.25)) // ~18px
+$font-size-base:          18px
 $font-size-small:         ceil(($font-size-base * 0.85)) // ~12px
 
 
@@ -165,6 +173,7 @@ $middle-sections-padding: 30px
   background: transparent
   color: lighten($theme-yellow, 30%) !important // $brand-primary
 
+// regular links
 @mixin link-visited
   background: transparent
   text-decoration: none !important
@@ -214,9 +223,8 @@ body
  */
 // ----------------------------------------------------------------------------
 h1, h2, h3, h4, h5, h6
-  @include font-droid
+  @include font-roboto
   color:          $gray-dark
-  font-weight:    normal !important
   margin-bottom:  0
 
   a
@@ -231,17 +239,17 @@ h1
   font-size: 40px
 
 h2
-  font-size: 32px
+  font-size: 36px
 
 h3
-  font-size: 26px
+  font-size: 22px
 
+header.page-header,
 h1.page-header,
 h2.page-header,
 h3.page-header
-  text-align:     center !important
-  margin:         0
-  border:         none
+  margin: 0
+  border: none
 
 
 
@@ -287,13 +295,13 @@ hr.main-separator
   border-color:   $brand-primary
   border-width:   3px
 
-.current-date
-  font-family: $font-family-serif
 
 .display-none
   display: none !important
 
-
+ul
+  list-style-position: inside
+  padding-left: 18px
 
 /**
  * Custom button class
@@ -322,7 +330,6 @@ hr.main-separator
   font-size:        $navbar-brand-font-size
   padding:          $navbar-brand-padding
   float:            left
-  min-width:        360px
 
   img
     padding-right:  10px
@@ -370,7 +377,7 @@ nav.navbar
   margin-top: $navbar-height/2
 
 #sidebar
-  border-left: 2px dotted $gray-lighter
+  border-right: 2px dotted $gray-lighter
 
 
 /* Small devices (tablets, 768px and down) */
@@ -392,10 +399,14 @@ nav.navbar
 /* Small devices (phones only 480px and less) */
 @media (max-width: $screen-sm-min)
 
+  .navbar
+    .container-fluid
+      padding: 0
+
+
   .navbar-brand
     @include font-lobster
     font-size:        $navbar-brand-font-size
-    text-transform:   uppercase
     padding-left:     7px
     padding-right:    0
     padding-top:      $navbar-brand-padding
@@ -476,10 +487,11 @@ nav.navbar
     height: auto !important
 
 
-
-
 .navbar-collapse .in
   overflow-y: none // fix vertical scrollbar on phone media screen
+
+
+
 
 
 /**
@@ -527,6 +539,27 @@ nav.navbar
 @mixin page-default-container
   padding-bottom: $middle-sections-padding
   border-bottom:  1px solid darken($gray-lighter, 3%)
+
+
+
+// ----------------------------------------------------------------------------
+// #intro
+.entry-content
+  .panel
+    border:             none
+    -webkit-box-shadow: none
+    box-shadow:         none
+
+    .panel-body
+      padding: 0
+
+
+.published
+  font-family: $font-family-serif
+
+.summary
+  padding-top: 15px
+
 
 // ----------------------------------------------------------------------------
 // #intro
@@ -579,6 +612,28 @@ nav.navbar
   .sub-text
     padding-bottom: 20px
     text-align:     justified
+
+/**
+ * Archives section
+ */
+// ----------------------------------------------------------------------------
+#archives
+  h2
+    margin-top: 0
+
+  .year, .month, .day
+    padding:    8px 20px
+
+  .year
+    font-size:  $font-size-large
+
+  .month, .day
+    font-size:  $font-size-base
+
+  footer
+    padding:  0
+    padding-bottom: 25px
+    height:   auto
 
 /**
  * Footer section
