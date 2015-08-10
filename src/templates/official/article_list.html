@@ -1,34 +1,34 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% if articles %}
-        {% for article in (articles_page.object_list if articles_page else articles) %}
-            <article>
-                <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
-                <div class="current-date text-muted">{{ article.locale_date }}</div>
-                {% if SHOW_DATE_MODIFIED %}
-                    {% if article.modified %}
-                        <span class="label label-default">Modified</span>
-                        <span class="modified">
-                            <time datetime="{{ article.modified.isoformat() }}">{{ article.locale_modified }}</time>
-                        </span>
-                    {% endif %}
-                {% endif %}
+  {% if articles %}
+    {% for article in (articles_page.object_list if articles_page else articles) %}
+      <article>
+        <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+        <div class="published text-muted">{{ article.locale_date }}</div>
+        {% if SHOW_DATE_MODIFIED %}
+          {% if article.modified %}
+            <span class="label label-default">Modified</span>
+            <span class="modified">
+              <time datetime="{{ article.modified.isoformat() }}">{{ article.locale_modified }}</time>
+            </span>
+          {% endif %}
+        {% endif %}
 
-                {% if DISPLAY_ARTICLE_INFO_ON_INDEX %}
-                    <div class="well well-sm">
-                        {% include "includes/article_info.html" %}
-                    </div>
-                {% endif %}
+        {% if DISPLAY_ARTICLE_INFO_ON_INDEX %}
+          <div class="well well-sm">
+            {% include "includes/article_info.html" %}
+          </div>
+        {% endif %}
 
-                <div class="summary">{{ article.summary }}
-                    {% include 'includes/comment_count.html' %}
-                    <a class="btn btn-default btn-xs" href="{{ SITEURL }}/{{ article.url }}">read more</a>
-                </div>
-            </article>
-            <hr/>
-        {% endfor %}
-    {% endif %}
+        <div class="summary">{{ article.summary }}
+          {% include 'includes/comment_count.html' %}
+          <a class="btn btn-default btn-xs" href="{{ SITEURL }}/{{ article.url }}">read more</a>
+        </div>
+      </article>
+      <hr/>
+    {% endfor %}
+  {% endif %}
 
-    {% include 'includes/pagination.html' %}
+  {% include 'includes/pagination.html' %}
 {% endblock content %}
