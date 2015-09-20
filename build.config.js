@@ -29,6 +29,7 @@ module.exports = {
       'vendor/jquery.easing/js/jquery.easing.js',
       'vendor/lodash/lodash.js',
       'vendor/bootstrap-sass-official/assets/javascripts/bootstrap.js',
+      'vendor/anchor-js/anchor.min.js'
     ],
     css: [
     ],

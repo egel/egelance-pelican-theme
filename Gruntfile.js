@@ -112,6 +112,16 @@ module.exports = function(grunt) {
           }
         ]
       },
+      build_css: {
+        files: [
+          {
+            src: [ '**' ],
+            dest: '<%= build_dir %>/static/css/',
+            cwd: 'src/css',
+            expand: true
+          }
+        ]
+      },
       build_html: {
         files: [
           {
@@ -317,6 +327,17 @@ module.exports = function(grunt) {
       },
 
       /**
+       * When images source change, we wnat to copy them
+       */
+      css: {
+        files: [ 'src/css/**/*' ],
+        tasks: [
+          'copy:build_css',
+          'compress:build',
+        ]
+      },
+
+      /**
        * When our JavaScript source files change, we want to run lint them and
        * run our unit tests.
        */
@@ -376,6 +397,7 @@ module.exports = function(grunt) {
     'uglify',                    // minified js/prod.js
 
     'copy:build_fonts',          // compile vendor_file.fonts to build/fonts
+    'copy:build_css',
     'copy:build_html',           // copy jinja2 html templates
     'copy:build_images',         // copy images folder
     'copy:build_plugins',

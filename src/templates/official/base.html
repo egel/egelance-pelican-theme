@@ -55,7 +55,8 @@
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" type="text/css"/>
-  <link href="{{ SITEURL }}/theme/css/pygments/{{ PYGMENTS_STYLE|default('native') }}.css" rel="stylesheet">
+  <link href="{{ SITEURL }}/theme/css/disable-boostrap-pre-for-pygments.css" rel="stylesheet">
+  <link href="{{ SITEURL }}/theme/css/pygments-{{ PYGMENTS_STYLE|default('native') }}.css" rel="stylesheet">
 
   {% if FEED_ALL_ATOM %}
     <link href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed"/>
