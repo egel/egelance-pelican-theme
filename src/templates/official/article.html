@@ -68,21 +68,17 @@
 {% endblock %}
 
 {% block content %}
-  <section id="content">
+  <section id="content" class="single-article">
     <article>
       <header class="page-header">
+        {% include "includes/article_info.html" %}
         <h1>
-          <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">
-            {{ article.title }}
-          </a>
+          {{ article.title }}
+          <!-- <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">
+          </a> -->
         </h1>
       </header>
       <div class="entry-content">
-        <div class="panel">
-          <div class="panel-body">
-            {% include "includes/article_info.html" %}
-          </div>
-        </div>
         {{ article.content }}
       </div>
       <!-- /.entry-content -->
@@ -105,4 +101,5 @@
   <!-- add shariff support -->
   <script src="{{ SITEURL }}/theme/js/shariff.min.js"></script>
 {% endif %}
+</div>
 {% endblock %}

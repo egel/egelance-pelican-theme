@@ -31,11 +31,11 @@
 
   {# Open Graph tags #}
   {% if USE_OPEN_GRAPH is not defined %}
-      {% set USE_OPEN_GRAPH = True %}
+    {% set USE_OPEN_GRAPH = True %}
   {% endif %}
   {% if USE_OPEN_GRAPH %}
   {% block opengraph %}
-  <!-- Open Graph tags -->
+    <!-- Open Graph tags -->
     {% if OPEN_GRAPH_FB_APP_ID %}
       <meta property="fb:app_id" content="{{ OPEN_GRAPH_FB_APP_ID }}"/>
     {% endif %}
@@ -57,61 +57,73 @@
   <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" type="text/css"/>
   <link href="{{ SITEURL }}/theme/css/disable-boostrap-pre-for-pygments.css" rel="stylesheet">
   <link href="{{ SITEURL }}/theme/css/pygments-{{ PYGMENTS_STYLE|default('native') }}.css" rel="stylesheet">
-
   {% if FEED_ALL_ATOM %}
-    <link href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed"/>
+  <link href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed"/>
   {% endif %}
   {% if FEED_ALL_RSS %}
-    <link href="{{ SITEURL }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed"/>
+  <link href="{{ SITEURL }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed"/>
   {% endif %}
 </head>
 <body>
-  <div class="container">
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a href="{{ SITEURL }}/" class="navbar-brand">
-            {% if SITELOGO %}<img src="{{ SITEURL }}/{{ SITELOGO }}" width="{{ SITELOGO_SIZE }}"/> {% endif %}
-            {% if not HIDE_SITENAME %}{{ SITENAME }}{% endif %}
-          </a>
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="{{ SITEURL }}/" class="navbar-brand">
+          {% if SITELOGO %}<img src="{{ SITEURL }}/{{ SITELOGO }}" width="{{ SITELOGO_SIZE }}"/> {% endif %}
+          {% if not HIDE_SITENAME %}{{ SITENAME }}{% endif %}
+        </a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          {% if 'tipue_search' in PLUGINS %}
+          <li>
+              <span>
+                  <form class="navbar-search" action="/search.html">
+                      <input type="text" class="" placeholder="Search" name="q" id="tipue_search_input" required>
+                  </form>
+              </span>
+          </li>
+          {% endif %}
+
+          <li {%- if output_file == "index.html" %} class="selected"{% endif %}><a href="{{ SITEURL }}">Home</a></li>
+
+          {% if DISPLAY_PAGES_ON_MENU %}
+            {% for p in PAGES %}
+            <li {%- if p == page %} class="selected"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+            {% endfor %}
+          {% endif %}
+
+          {% if MENUITEMS %}
+            {% for title, link in MENUITEMS %}
+            <li><a href="{{ link }}">{{ title }}</a></li>
+            {% endfor %}
+          {% endif %}
+          <li {% if output_file == ARCHIVES_URL %} class="selected"{% endif %}><a href="{{ SITEURL }}/{% if ARCHIVES_URL %}{{ ARCHIVES_URL }}{% else %}archives.html{% endif %}">Archives</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+  </nav>
+  <header class="intro-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="site-heading">
+            <h1>Do more in less time</h1>
+            <hr class="small">
+            <span class="subheading">Simplicity and clarity of implementation</span>
+          </div>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <!-- {% if 'tipue_search' in PLUGINS %}
-            <li>
-                <span>
-                    <form class="navbar-search" action="/search.html">
-                        <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required>
-                    </form>
-                </span>
-            </li>
-            {% endif %} -->
+      </div>
+    </div>
+  </header>
 
-            <li {%- if output_file == "index.html" %} class="selected"{% endif %}><a href="{{ SITEURL }}">Home</a></li>
-
-            {% if DISPLAY_PAGES_ON_MENU %}
-              {% for p in PAGES %}
-              <li {%- if p == page %} class="selected"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
-              {% endfor %}
-            {% endif %}
-
-            {% if MENUITEMS %}
-              {% for title, link in MENUITEMS %}
-              <li><a href="{{ link }}">{{ title }}</a></li>
-              {% endfor %}
-            {% endif %}
-            <li {%- if output_file == ARCHIVES_SAVE_AS %} class="selected"{% endif %}><a href="{{ SITEURL }}/{% if ARCHIVES_URL %}{{ ARCHIVES_URL }}{% else %}archives.html{% endif %}">Archives</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div><!--/.container-fluid -->
-    </nav>
-  </div>
   <div class="container">
     <div class="row">
       {% if not HIDE_SIDEBAR or ABOUT_ME %}

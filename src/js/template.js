@@ -4,7 +4,9 @@
 //'h1, h2, h3, h4, h5, h6' adding anchors to all headings.
 anchors.options = {
   placement:  'left',
-  // visible:    'always'
+  icon: '¶'
 };
 
-anchors.add('h2, h3, h4, h5');
+anchors.add('#content > h2, h3, h4, h5, h6');
+anchors.remove('.no-anchor');
+anchors.remove('#sidebar > h1, h2, h3, h4, h5, h6');

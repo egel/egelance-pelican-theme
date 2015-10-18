@@ -1,3 +1,6 @@
+@import "../mixins/border_radius"
+
+
 /**
  *  Import external fonts
  */
@@ -5,7 +8,17 @@
 @import url(http://fonts.googleapis.com/css?family=Lobster+Two)
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif)
 @import url(http://fonts.googleapis.com/css?family=Halant)
+@import url(https://fonts.googleapis.com/css?family=Merriweather&subset=latin,latin-ext)
+@import url(https://fonts.googleapis.com/css?family=Bitter:400,700)
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600)
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab)
 
+@import url(https://fonts.googleapis.com/css?family=Lato:300)
+@import url(https://fonts.googleapis.com/css?family=PT+Sans)
+@import url(https://fonts.googleapis.com/css?family=Satisfy)
+@import url(https://fonts.googleapis.com/css?family=Lora)
+@import url(https://fonts.googleapis.com/css?family=Vollkorn:700)
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800)
 
 // staged
 // not used but could help later
@@ -18,6 +31,7 @@
  * Theme colors
  */
 $theme-bone:              #F4F4F4
+$theme-creme:             #F8E1B4
 $theme-yellow:            #FEC908
 $theme-red:               #C90213
 $theme-red-solarized:     #cf4646
@@ -41,12 +55,45 @@ $theme-emerald:           #53BF83
 @mixin font-droid
   font-family: 'Droid Serif', serif
 
-@mixin font-roboto
-  font-family: 'Halant', serif
+// @mixin font-roboto
+//   font-family: 'Halant', serif
+// @mixin font-merriweather
+//   font-family: 'Merriweather', serif
 
-@mixin font-roboto-bold
-  font-family: 'Roboto', sans-serif
+// @mixin font-bitter
+//   font-family: 'Bitter', serif
+
+@mixin font-lato-300
+  font-family: 'Lato', sans-serif
+  font-weight: 300
+
+// @mixin font-source-600
+//   font-family: 'Source Sans Pro', sans-serif
+//   font-weight: 600
+
+@mixin font-open-sans-800
+  font-family: 'Open Sans', sans-serif
+  font-weight: 800
+
+@mixin font-vollkorn
+  font-family: 'Vollkorn', serif
   font-weight: 700
+
+@mixin font-ptsans
+  font-family: 'PT Sans', sans-serif
+
+// @mixin font-robotoslab
+//   font-family: 'Roboto Slab', serif
+
+@mixin font-satisfy
+  font-family: 'Satisfy', cursive
+
+@mixin font-lora
+  font-family: 'Lora', serif
+
+// @mixin font-roboto-bold
+//   font-family: 'Roboto', sans-serif
+//   font-weight: 700
 
 
 /******************************************************************************
@@ -56,10 +103,7 @@ $theme-emerald:           #53BF83
 //== Colors
 //
 //## Gray and brand colors for use across Bootstrap.
-// $brand-primary:         #428bca
-// $brand-primary:         $theme-cadet-blue
-// $brand-primary:         $theme-dark-blue //#935353
-$brand-primary:         #04A1E6
+$brand-primary:         $theme-red-solarized
 $brand-success:         #5cb85c
 $brand-info:            #5bc0de
 $brand-warning:         #f0ad4e
@@ -76,7 +120,7 @@ $brand-danger:          #d9534f
 $body-bg:               #fff
 
 //** Global text color on `<body>`.
-// $text-color:            $gray-dark
+$text-color:            $gray-dark
 
 //** Global textual link color.
 $link-color:            $brand-primary
@@ -88,17 +132,21 @@ $link-hover-color:      darken($link-color, 15%)
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif !default
+
+$font-family-sans-serif:  "PT Sans", Helvetica, Arial, sans-serif
 $font-family-serif:       Georgia, "Times New Roman", Times, serif !default
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default
 $font-family-base:        $font-family-sans-serif !default
 
+$font-size-hulk:          ceil(($font-size-base * 3.4)) // ~18px
+$font-size-huge:          ceil(($font-size-base * 2.9)) // ~18px
 $font-size-bigger:        ceil(($font-size-base * 1.9)) // ~18px
 $font-size-big:           ceil(($font-size-base * 1.5)) // ~18px
 $font-size-large:         ceil(($font-size-base * 1.25)) // ~18px
 $font-size-base:          18px
 $font-size-small:         ceil(($font-size-base * 0.85)) // ~12px
+$font-size-smaller:       ceil(($font-size-base * 0.65)) // ~12px
 
 
 //== Navbar
@@ -106,7 +154,7 @@ $font-size-small:         ceil(($font-size-base * 0.85)) // ~12px
 //##
 
 // Basics of a navbar
-$navbar-height:                    50px
+$navbar-height:                    40px
 
 $navbar-default-color:             #777
 $navbar-default-bg:                #fff
@@ -131,6 +179,10 @@ $navbar-default-toggle-border-color:       $brand-primary
 $navbar-default-toggle-hover-bg:           #fff
 $navbar-default-toggle-icon-bar-bg:        #222
 
+$navbar-brand-font-size:  $font-size-big
+$navbar-brand-padding:    20px
+$navbar-list-padding:     ($navbar-height - $line-height-base * $font-size-base)/2
+
 
 
 //== Buttons
@@ -152,13 +204,8 @@ $logo_padding:  7px
 $header-top-height: 25px
 $header-top-bottom-padding: ($header-top-height - $line-height-base * $font-size-base)/2 +1
 
-$navbar-brand-font-size:  $font-size-bigger
-$navbar-brand-padding:    15px
-$navbar-list-padding:     ($navbar-height - $line-height-base * $font-size-base)/2
-
 $footer-height: 90px
 
-$middle-sections-padding: 30px
 
 /******************************************************************************
  *  Mixins (Local)
@@ -177,12 +224,12 @@ $middle-sections-padding: 30px
 @mixin link-visited
   background: transparent
   text-decoration: none !important
-  color: lighten($gray-dark, 18%)
+  color: lighten($gray-darker, 18%)
 
 @mixin hover-active-focus
-  text-decoration: none !important
-  background: transparent
-  color: lighten($gray-dark, 10%)
+  text-decoration:  none !important
+  background:       transparent
+  color:            $brand-primary
 
 
 
@@ -201,6 +248,7 @@ body
   border:       0
   outline:      0
   background-color:   $body-bg
+  font-family:        $font-family-sans-serif
 
 
 // any link in the webpage e
@@ -223,8 +271,9 @@ body
  */
 // ----------------------------------------------------------------------------
 h1, h2, h3, h4, h5, h6
-  @include font-roboto
-  color:          $gray-dark
+  @include font-open-sans-800
+  @include link-visited
+  margin-top:     2px
   margin-bottom:  0
 
   a
@@ -233,13 +282,13 @@ h1, h2, h3, h4, h5, h6
 
     &:hover, &:active //, &:focus
       @include hover-active-focus
-      text-decoration: underline !important
+      // text-decoration: underline !important
 
 h1
-  font-size: 40px
+  font-size: 36px
 
 h2
-  font-size: 36px
+  font-size: 28px
 
 h3
   font-size: 22px
@@ -248,7 +297,7 @@ header.page-header,
 h1.page-header,
 h2.page-header,
 h3.page-header
-  margin: 0
+  margin:       0
   border: none
 
 
@@ -259,12 +308,15 @@ h3.page-header
 // ----------------------------------------------------------------------------
 code, pre, .pre
   padding:            5px
-  margin:             10px 0
-  background-color:   #EFEFEF
-  border:             1px solid #DADADA
+  margin:             2px 0px
+  background-color:   $gray-lighter
+  color:              $theme-red-solarized
+  border:             none
+  @include border-radius(0)
+
 
 code
-  padding:      0 3px
+  padding:      2px 5px
 
 pre
   margin:       10px 0
@@ -274,7 +326,7 @@ pre
   margin-top:   60px
 
   &:first-child
-    margin-top: 20px
+    margin-top: 0px
 
 .row
   margin-top:   10px
@@ -294,6 +346,13 @@ hr.main-separator
   max-width:      50px
   border-color:   $brand-primary
   border-width:   3px
+
+hr.small
+  max-width:      100px
+  margin:         15px auto
+  border-width:   4px
+  border-color:   $theme-bone
+
 
 
 .display-none
@@ -326,9 +385,10 @@ ul
  */
 // ----------------------------------------------------------------------------
 .navbar-brand
-  @include font-lobster
+  @include font-satisfy
   font-size:        $navbar-brand-font-size
-  padding:          $navbar-brand-padding
+  padding:          $navbar-brand-padding/2
+  padding-left:     $navbar-brand-padding
   float:            left
 
   img
@@ -340,16 +400,12 @@ ul
 
 
 #navbar
-  margin-bottom: 0px
+  margin-bottom:    0px
   background-color: transparent
-  border: none
+  border:           none
 
 
   ul.nav
-    > li.active, li.selected
-      > a, a.active
-        @include hover-active-focus
-
     > li
       > a
         font-size:        14px
@@ -359,19 +415,22 @@ ul
         padding-top:      $navbar-list-padding !important
         padding-bottom:   $navbar-list-padding !important
 
-        &:link, &:visited
-          @include link-visited
+        // &:link, &:visited
+        //   @include link-visited
 
-        &:hover, &:active //, &:focus
-          @include hover-active-focus
+        // &:hover, &:active //, &:focus
+        //   @include hover-active-focus
 
+    > li.active, li.selected
+      > a, a.active
+        @include hover-active-focus
 
 nav.navbar
   margin-bottom:  0
   margin-top:     20px
   padding-bottom: 20px
   border: none
-  border-bottom: 2px dotted #eee
+  // border-bottom: 2px dotted #eee
 
 #master-container
   margin-top: $navbar-height/2
@@ -379,9 +438,16 @@ nav.navbar
 #sidebar
   border-right: 2px dotted $gray-lighter
 
+  ul
+    list-style-type: none
+
+  h4
+    margin-top:     20px
+    margin-bottom:  10px
+
 
 /* Small devices (tablets, 768px and down) */
-@media (max-width: $screen-sm-min)
+@media (max-width: $screen-md-min)
   .navbar
     .container
       padding:  0 !important
@@ -529,22 +595,58 @@ nav.navbar
   color:              $brand-primary
 
 
-/**
- *  Welcome section
- */
-@mixin page-default
-  padding:            $middle-sections-padding
-  padding-bottom:     0
-
-@mixin page-default-container
-  padding-bottom: $middle-sections-padding
-  border-bottom:  1px solid darken($gray-lighter, 3%)
-
-
 
 // ----------------------------------------------------------------------------
 // #intro
-.entry-content
+$intro-header-lg-height: 400px
+$intro-header-md-height: 300px
+$intro-header-sm-height: 200px
+
+.intro-header
+  // background-image: url('http://i2.pinger.pl/pgr26/7419f1b10004314d50b6853d/kosmos_1920x1200_2.jpg')
+  background-image: url('https://static.pexels.com/photos/7109/laptop-notebook-clean-hero.jpg')
+  background-size: cover
+  background-position: center
+  text-align: center
+  height:   $intro-header-lg-height
+  padding:  $intro-header-lg-height/3 0
+
+  /* Small devices (tablets, 768px and down) */
+  @media (max-width: $screen-md-min)
+    height:   $intro-header-md-height
+    padding:  $intro-header-md-height/3 0
+
+  /* Small devices (phones only 480px and less) */
+  @media (max-width: $screen-sm-min)
+    height:   $intro-header-sm-height
+    padding:  $intro-header-sm-height/4 0
+
+  .site-heading
+    h1
+      @include font-ptsans
+      color:      $theme-bone
+      font-size:  $font-size-hulk
+
+      /* Small devices (tablets, 768px and down) */
+      @media (max-width: $screen-md-min)
+        font-size:  $font-size-huge
+
+      /* Small devices (phones only 480px and less) */
+      @media (max-width: $screen-sm-min)
+        font-size:  $font-size-bigger
+
+  hr.small
+    border-color:   $brand-primary
+
+  span.subheading
+    @include    font-lato-300
+    color:      $theme-bone
+    font-size:  $font-size-large
+
+    /* Small devices (phones only 480px and less) */
+    @media (max-width: $screen-sm-min)
+      font-size:  $font-size-base
+
   .panel
     border:             none
     -webkit-box-shadow: none
@@ -555,63 +657,54 @@ nav.navbar
 
 
 .published
-  font-family: $font-family-serif
+  @include font-ptsans
 
 .summary
   padding-top: 15px
 
+$content-padding-left:  20px
+$content-padding-top:   20px
 
+/**
+ * articles list section
+ */
 // ----------------------------------------------------------------------------
-// #intro
-.intro
-  height:               100%
-  min-height:           450px
-  color:                $theme-bone
-  text-align:           center
-  background-color:     #262626
-  background-size:      cover
-  background-position:  left
-  background-repeat:    no-repeat
-  background-image:     url($img_path + "intro-background.jpg")
+.articles-list
+  padding-top:  $content-padding-top
+  padding-left: $content-padding-left
 
-  .main-header-content
-    h1
-      padding-top:      0
-      padding-bottom:   0
-      font-size:        350%
+  hr
+    margin: 0
 
-    h1, h2, h3, h4, h5, h6
-      color:            $theme-bone
+  article
+    padding-top:    30px
+    padding-bottom: 30px
 
-    hr
-      max-width:      50px
-      border-color:   $brand-primary
-      border-width:   3px
+  article:first-child
+    padding-top:    0
 
 
+
+/**
+ * Single article section
+ * Single page section
+ */
 // ----------------------------------------------------------------------------
-#welcome
-  padding-top:      $middle-sections-padding
-  text-align:       center
+#content
+  padding-left: $content-padding-left
+  padding-top:  $content-padding-top
 
-  /* Small devices (phone, 480px and down) */
-  @media (max-width: $screen-xs-min)
-    padding: 10px 10px 10px 0
+  // h1, h2, h3, h4, h5, h6
+  //   @include link-visited
 
-  > .container
-    @include page-default-container
+  h3
+    padding-top:     30px
+    padding-bottom:  20px
 
+  h4, h5, h6
+    padding-top:     20px
+    padding-bottom:  10px
 
-
-
-  .main-text
-    @include font-droid
-    padding-bottom: 20px
-    font-size:      1.6em
-
-  .sub-text
-    padding-bottom: 20px
-    text-align:     justified
 
 /**
  * Archives section

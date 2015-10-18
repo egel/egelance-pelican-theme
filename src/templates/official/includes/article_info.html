@@ -4,21 +4,18 @@
   </span>
   {% if SHOW_DATE_MODIFIED %}
     {% if article.modified %}
-      <span class="label label-default">Modified</span>
-      <span class="modified">
-        <i class="fa fa-calendar"></i><time datetime="{{ article.modified.isoformat() }}"> {{ article.locale_modified }}</time>
-      </span>
+      <span class="published text-muted"> · Modified at {{ article.locale_modified }}</span>
     {% endif %}
   {% endif %}
   {% if SHOW_ARTICLE_AUTHOR %}
     {% if article.author %}
-      <span class="label label-default">By</span>
-      <a href="{{ SITEURL }}/{{ article.author.url }}"><i class="fa fa-user"></i> {{ article.author }}</a>
+      <span class="published text-muted"> · By</span>
+      <a href="{{ SITEURL }}/{{ article.author.url }}"> {{ article.author }}</a>
     {% endif %}
   {% endif %}
 
   {% if SHOW_ARTICLE_CATEGORY %}
-    <span class="label label-default">Category</span>
+    <span class="published"> · Category</span>
     <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
   {% endif %}
 
