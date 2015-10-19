@@ -204,7 +204,7 @@ $logo_padding:  7px
 $header-top-height: 25px
 $header-top-bottom-padding: ($header-top-height - $line-height-base * $font-size-base)/2 +1
 
-$footer-height: 90px
+$site-footer-height: auto
 
 
 /******************************************************************************
@@ -734,12 +734,15 @@ $content-padding-top:   20px
 // ----------------------------------------------------------------------------
 footer
   background:     transparent
-  color:          #262626
+  color:          $gray-dark
   bottom:         0
-  width:          100%
-  height:         $footer-height
   padding-top:    20px
   padding-bottom: 20px
+
+.footer
+  background-color:   $gray-dark
+  color:              $theme-bone
+  height:             $site-footer-height
 
 /**
  * Debug override
