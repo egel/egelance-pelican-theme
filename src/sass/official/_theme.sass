@@ -1,4 +1,5 @@
 @import "../mixins/border_radius"
+@import "../mixins/intro_image"
 
 
 /**
@@ -94,6 +95,7 @@ $theme-emerald:           #53BF83
 // @mixin font-roboto-bold
 //   font-family: 'Roboto', sans-serif
 //   font-weight: 700
+
 
 
 /******************************************************************************
@@ -381,6 +383,20 @@ ul
 
 
 /**
+ * Custom images class
+ */
+.intro-image-sm
+  @include intro-image(150px)
+
+.intro-image-md
+  @include intro-image(250px)
+
+.intro-image-lg
+  @include intro-image(400px)
+
+
+
+/**
  * Top navigation
  */
 // ----------------------------------------------------------------------------
@@ -604,7 +620,7 @@ $intro-header-sm-height: 200px
 
 .intro-header
   // background-image: url('http://i2.pinger.pl/pgr26/7419f1b10004314d50b6853d/kosmos_1920x1200_2.jpg')
-  background-image: url('https://static.pexels.com/photos/7109/laptop-notebook-clean-hero.jpg')
+  background-image: url('/extras/laptop-notebook-clean-hero.jpg')
   background-size: cover
   background-position: left
   text-align: center
@@ -690,6 +706,7 @@ $content-padding-top:   20px
  * Single page section
  */
 // ----------------------------------------------------------------------------
+// this class should be access grobally
 #content
   padding-left: $content-padding-left
   padding-top:  $content-padding-top
@@ -705,7 +722,6 @@ $content-padding-top:   20px
     padding-top:     20px
     padding-bottom:  10px
 
-
 /**
  * Archives section
  */
@@ -713,6 +729,7 @@ $content-padding-top:   20px
 #archives
   h2
     margin-top: 0
+    font-size:  $font-size-large
 
   .year, .month, .day
     padding:    8px 20px

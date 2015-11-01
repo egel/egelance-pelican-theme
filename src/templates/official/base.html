@@ -13,8 +13,7 @@
 
   {# Favicons are a touchy subject. For reasoning for the following code, see: stackoverflow.com/a/23851464/872397 #}
   {% if FAVICON %}
-    <!-- <link href="{{ SITEURL }}/{{ FAVICON }}" rel="icon"> -->
-    <link rel="shortcut icon" href="blog.egel.pl/wp-content/themes/TheEgelBlogTemplate/images/favicon.png">
+    <link href="{{ SITEURL }}/{{ FAVICON }}" rel="icon">
   {% endif %}
   {% if FAVICON_IE %}
     <!--[if IE]><link rel="shortcut icon" href="{{ SITEURL }}/{{ FAVICON_IE }}"><![endif]-->
