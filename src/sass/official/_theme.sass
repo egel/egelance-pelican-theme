@@ -620,7 +620,7 @@ $intro-header-sm-height: 200px
 
 .intro-header
   // background-image: url('http://i2.pinger.pl/pgr26/7419f1b10004314d50b6853d/kosmos_1920x1200_2.jpg')
-  background-image: url('/extras/laptop-notebook-clean-hero.jpg')
+  background-image: url('/extras/laptop-notebook-clean-hero.jpg') // taken from https://static.pexels.com/photos/7109/laptop-notebook-clean-hero.jpg
   background-size: cover
   background-position: left
   text-align: center
@@ -680,6 +680,33 @@ $intro-header-sm-height: 200px
 
 $content-padding-left:  20px
 $content-padding-top:   20px
+
+@mixin intro-article-image($image_width, $paddings)
+  position: relative
+  float:    left
+
+  p
+    float:  left
+    margin: 0
+
+  img
+    padding:  $paddings
+    width:    $image_width
+
+.intro-article-image-xs
+  @include intro-article-image(30px, 10px)
+
+.intro-article-image-sm
+  @include intro-article-image(115px, 10px)
+
+.intro-article-image-md
+  @include intro-article-image(160px, 10px)
+
+.intro-article-image-lg
+  @include intro-article-image(280px, 10px)
+
+.intro-article-image-hg
+  @include intro-article-image(400px, 10px)
 
 /**
  * articles list section
