@@ -1,5 +1,5 @@
 @import "../mixins/border_radius"
-@import "../mixins/intro_image"
+@import "../mixins/intro_article_image"
 
 
 /**
@@ -382,19 +382,6 @@ ul
 
 
 
-/**
- * Custom images class
- */
-.intro-image-sm
-  @include intro-image(150px)
-
-.intro-image-md
-  @include intro-image(250px)
-
-.intro-image-lg
-  @include intro-image(400px)
-
-
 
 /**
  * Top navigation
@@ -681,17 +668,6 @@ $intro-header-sm-height: 200px
 $content-padding-left:  20px
 $content-padding-top:   20px
 
-@mixin intro-article-image($image_width, $paddings)
-  position: relative
-  float:    left
-
-  p
-    float:  left
-    margin: 0
-
-  img
-    padding:  $paddings
-    width:    $image_width
 
 .intro-article-image-xs
   @include intro-article-image(30px, 10px)
@@ -720,12 +696,30 @@ $content-padding-top:   20px
     margin: 0
 
   article
+    position:     relative
+    float:        left
+    height: auto
+    width: 100%
     padding-top:    30px
     padding-bottom: 30px
+    margin-bottom:  10px
+    border-bottom:  2px dotted #eee
+    clear: both
+
+    .summary
+      width:      100%
+      position:   relative
+      float:      left
 
   article:first-child
     padding-top:    0
 
+  article:last-child
+    padding-top:    0
+    border:         none
+
+  ul, ol
+    list-style-position: inside
 
 
 /**
@@ -748,6 +742,11 @@ $content-padding-top:   20px
   h4, h5, h6
     padding-top:     20px
     padding-bottom:  10px
+
+  .entry-content
+    ul, ol
+      list-style-position: inside
+
 
 /**
  * Archives section
