@@ -9,15 +9,14 @@ module.exports = {
    */
   build_dir:    'build',
   tmp_dir:      'tmp',
-  compile_dir:  'bin',
 
   /*
    * Current CSS sub-theme (for many SASS versions of site template)
    */
-  project_subtheme_name: 'official',
+  project_theme_name: 'official',
 
   app_files: {
-    unitjs:   [ 'Gruntfile.js', 'build.config.js' ],
+    unitjs:   [ 'Gulpfile.js', 'build.config.js' , 'gulp_src/**/*.js' ],
     js:       [ 'src/js/**/*.js', '!src/js/**/*.spec.js', '!src/assets/**/*.js' ],
     coffee:   [ 'src/coffee/**/*.coffee', '!src/coffee/**/*.spec.coffee' ],
     fonts:    [ 'src/fonts/**/*' ] // Additional fonts that aren't store into vendor libraries
@@ -25,19 +24,17 @@ module.exports = {
 
   vendor_files: {
     js: [
-      'vendor/jquery/dist/jquery.js',
-      'vendor/jquery.easing/js/jquery.easing.js',
-      'vendor/lodash/lodash.js',
-      'vendor/bootstrap-sass-official/assets/javascripts/bootstrap.js',
-      'vendor/anchor-js/anchor.min.js'
+      'node_modules/anchor-js/anchor.js',
+      'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
+      'node_modules/jquery.easing/jquery.easing.js',
+      'node_modules/jquery/dist/jquery.js',
+      'node_modules/lodash/lodash.js'
     ],
     css: [
     ],
     fonts: [
-      'vendor/font-awesome-sass/assets/fonts/font-awesome/*',
-      'vendor/bootstrap-sass-official/assets/fonts/bootstrap/*'
-    ],
-    assets: [
+      'node_modules/bootstrap-sass/assets/fonts/bootstrap/*',
+      'node_modules/font-awesome/fonts/*'
     ]
   }
 };
