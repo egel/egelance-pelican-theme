@@ -1,9 +1,0 @@
-{% if LINKS %}
-  <li><h4><i class="fa fa-external-link-square fa-lg"></i> <span class="icon-label">Links</span></h4>
-    <ul id="links">
-      {% for name, link in LINKS %}
-      <li><a href="{{ link }}" target="_blank">{{ name }}</a></li>
-      {% endfor %}
-    </ul>
-  </li>
-{% endif %}
