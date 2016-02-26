@@ -10,24 +10,35 @@ module.exports = {
   build_dir:    'build',
   tmp_dir:      'tmp',
 
-  /*
+  /**
    * Current CSS sub-theme (for many SASS versions of site template)
    */
   project_theme_name: 'official',
 
   app_files: {
-    unitjs:   [ 'gulpfile.js', 'build.config.js' , 'gulp_src/**/*.js' ],
-    js:       [ 'src/js/**/*.js', '!src/js/**/*.spec.js', '!src/assets/**/*.js' ],
-    fonts:    [ 'src/fonts/**/*' ], // Additional fonts that aren't store into vendor libraries
-    images:   [ 'src/plugins/**/*.png' ]
+    unitjs: [ 'gulpfile.js', 'build.config.js' , 'gulp_src/**/*.js' ],
+    js: [
+      'src/js/**/*.js',
+      '!src/js/**/*.spec.js'
+      // 'src/plugins/**/*.js',
+      // '!src/plugins/**/*.spec.js'
+    ],
+    fonts: [ 'src/fonts/**/*' ], // Additional fonts that aren't store into vendor libraries
+    // images: [
+      // 'src/plugins/**/*.png',
+      // 'src/plugins/**/*.jpg'
+    // ],
+    // css: [ 'src/plugins/**/*.css' ], // all additional css from plugins
+    html: [ 'src/html/**' ],
+    plugins: [ 'src/plugins/tipuesearch/**' ]
   },
 
   vendor_files: {
     js: [
-      'node_modules/anchor-js/anchor.js',
       'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
       'node_modules/jquery.easing/jquery.easing.js',
       'node_modules/jquery/dist/jquery.js',
+      'node_modules/anchor-js/anchor.js',
       'node_modules/lodash/lodash.js'
     ],
     css: [
