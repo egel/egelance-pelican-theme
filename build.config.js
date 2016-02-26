@@ -16,10 +16,10 @@ module.exports = {
   project_theme_name: 'official',
 
   app_files: {
-    unitjs:   [ 'Gulpfile.js', 'build.config.js' , 'gulp_src/**/*.js' ],
+    unitjs:   [ 'gulpfile.js', 'build.config.js' , 'gulp_src/**/*.js' ],
     js:       [ 'src/js/**/*.js', '!src/js/**/*.spec.js', '!src/assets/**/*.js' ],
-    coffee:   [ 'src/coffee/**/*.coffee', '!src/coffee/**/*.spec.coffee' ],
-    fonts:    [ 'src/fonts/**/*' ] // Additional fonts that aren't store into vendor libraries
+    fonts:    [ 'src/fonts/**/*' ], // Additional fonts that aren't store into vendor libraries
+    images:   [ 'src/plugins/**/*.png' ]
   },
 
   vendor_files: {
