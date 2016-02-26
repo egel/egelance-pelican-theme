@@ -7,7 +7,7 @@ var connect       = require('gulp-connect');
 
 buildStages = {
   stage1: [ 'clean-all' ],
-  stage2: [ 'copy-fonts', 'copy-html', 'build-javascript', 'build-styles' ],
+  stage2: [ 'copy-fonts', 'copy-html', 'copy-plugins', 'build-javascript', 'build-styles' ],
   stage3: [ 'inject-html' ]
 };
 

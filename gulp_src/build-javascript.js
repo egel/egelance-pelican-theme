@@ -11,7 +11,7 @@ var sourcemaps    = require('gulp-sourcemaps');
 var uglify        = require('gulp-uglify');
 
 gulp.task('build-javascript', function() {
-  var filename = pkg.name + '-' + pkg.version
+  var filename = 'scripts'
   return gulp.src(buildConfig.vendor_files.js)
     .pipe(addSrc(buildConfig.app_files.js))
     .pipe(sourcemaps.init())

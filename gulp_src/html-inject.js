@@ -1,8 +1,8 @@
-var buildConfig = require('../build.config');
-var gulp = require('gulp');
-var inject = require('gulp-inject');
-var series = require('stream-series');
-var htmlmin = require('gulp-htmlmin');
+var buildConfig   = require('../build.config.js');
+var gulp          = require('gulp');
+var inject        = require('gulp-inject');
+var series        = require('stream-series');
+var htmlmin       = require('gulp-htmlmin');
 
 gulp.task('inject-html', function() {
 

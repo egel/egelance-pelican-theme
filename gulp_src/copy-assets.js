@@ -15,3 +15,8 @@ gulp.task('copy-html', function() {
     .pipe(gulp.dest(buildConfig.build_dir + '/templates/'));
 });
 
+gulp.task('copy-plugins', function() {
+  return gulp.src(buildConfig.app_files.plugins)
+    .pipe(gulp.dest(buildConfig.build_dir + '/static/plugins/'));
+});
+
