@@ -7,7 +7,7 @@ var chalk       = require('chalk');
 gulp.task('watchers', function() {
   var jsWatchArgs = {
     source: buildConfig.app_files.js,
-    tasks: ['transpile-scripts']
+    tasks: ['build-javascript']
   };
 
   //if (arguments.tests) {
