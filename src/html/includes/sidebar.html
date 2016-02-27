@@ -16,6 +16,7 @@
           {% endif %}
         <li ><a href="{{ link }}"><i class={{ iconattributes }}></i></a></li>
         {% endfor %}
+        {% if FEED_ALL_ATOM %}<li><a href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" title="Feed atom"><i class="fa fa-lg fa-rss-square"></i></a></li>{% endif %}
       </ul>
     </li>
     {% endif %}

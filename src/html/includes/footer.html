@@ -2,13 +2,9 @@
    <div class="container">
       <div class="row">
         <div class="col-xs-12">
-          <p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p>
-
-          <ul>
-            {% if FEED_ALL_ATOM %}<li><a href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}">feed</a></li>{% endif %}
-          </ul>
+          <a href="#" class="scrollToTop"><i class="fa fa-arrow-up"></i></a>
           <p>
-            Copyright &copy; &middot; {{ SITENAME }} &middot; The Kiss Principle &middot; Build with <a href="http://docs.getpelican.com/" target="_blank">pelican</a>.
+            &copy; Copyright {{ CURRENT_DATE | strftime('%Y') }} &middot; {{ SITENAME }} &middot; The <a href="https://en.wikipedia.org/wiki/KISS_principle" title="Keep it stupid simple">KISS</a> Principle &middot; Build with <a href="http://docs.getpelican.com/" target="_blank">pelican</a>.
           </p>
         </div>
       </div>
