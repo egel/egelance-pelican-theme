@@ -2,6 +2,7 @@
 Modern, minimalistic and well readable theme for
 [Pelican][pelican_official_site], Python Static Files Generator.
 
+<img src="http://i.imgur.com/k3v695l.png" width="100%" />
 
 ## Get your copy
 To download and install theme, you need to switch to `bin/` folder and download
@@ -16,11 +17,8 @@ process** visit our [dev wiki page][wiki-dev] to find more info how to achieve
 this.
 
 
-
-
 ## License
 MIT 2015 Maciej Sypień
-
 
 [pelican_official_site]: http://blog.getpelican.com/
 [wiki-dev]: https://github.com/egel/egelance-pelican-theme/wiki/Development
