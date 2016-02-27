@@ -1,6 +1,6 @@
 {
   "name": "egelance_pelican_theme",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Simply, minimalistic and modern pelican theme.",
   "main": "gulpfile.js",
   "scripts": {
