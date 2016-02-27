@@ -14,7 +14,7 @@
     <h1>Personal reading list</h1>
     <div id="reading_list">
       {% if GOODREADS_ACTIVITY_FEED %}
-        <h3>{{ goodreads_activity.shelf_title }}</h3>
+        <h2>{{ goodreads_activity.shelf_title }}</h2>
         {% for book in goodreads_activity.books %}
           <div class="book">
             <img src="{{book.m_cover}}"/>

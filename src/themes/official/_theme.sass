@@ -255,7 +255,7 @@ header.page-header,
 h1.page-header,
 h2.page-header,
 h3.page-header
-  margin:       0
+  margin: 0
   border: none
 
 
@@ -691,6 +691,10 @@ $content-padding-top:   20px
   // h1, h2, h3, h4, h5, h6
   //   @include link-visited
 
+
+  h1, h2
+    margin-bottom: 20px
+
   h3
     padding-top:     30px
     padding-bottom:  20px
@@ -702,6 +706,7 @@ $content-padding-top:   20px
   .entry-content
     ul, ol
       list-style-position: inside
+
 
 
 /**
@@ -726,6 +731,26 @@ $content-padding-top:   20px
     padding:  0
     padding-bottom: 25px
     height:   auto
+
+
+#reading_list
+
+  .book
+    clear: both
+    margin-bottom: 30px
+    height: auto
+    overflow: auto
+
+    header
+      font-size: 120%
+
+      small
+        font-size: 80%
+
+    img
+      float: left
+      margin-right: 20px
+
 
 /**
  * Footer section
