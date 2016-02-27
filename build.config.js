@@ -22,8 +22,6 @@ module.exports = {
     js: [
       'src/js/**/*.js',
       '!src/js/**/*.spec.js'
-      // 'src/plugins/**/*.js',
-      // '!src/plugins/**/*.spec.js'
     ],
     fonts: [ 'src/fonts/**/*' ], // Additional fonts that aren't store into vendor libraries
     sass_all: [ 'src/themes/' + PROJECT_THEME_NAME + '**/*.sass' ], // all additional css from plugins
@@ -37,7 +35,7 @@ module.exports = {
       'node_modules/jquery.easing/jquery.easing.js',
       'node_modules/lodash/lodash.js',
       'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
-      'node_modules/anchor-js/anchor.js',
+      'node_modules/anchor-js/anchor.js'
     ],
     css: [
     ],
