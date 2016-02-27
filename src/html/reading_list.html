@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Reading list - {{ SITENAME }}{% endblock %}
+{% block breadcrumbs %}
+  {% if DISPLAY_BREADCRUMBS %}
+  <ol class="breadcrumb">
+    <li><a href="{{ SITEURL }}" title="{{ SITENAME }}"><i class="fa fa-home fa-lg"></i></a></li>
+    <li class="active">Reading list</li>
+  </ol>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <section id="content">
+    <h1>Personal reading list</h1>
+    <div id="reading_list">
+      {% if GOODREADS_ACTIVITY_FEED %}
+        <h3>{{ goodreads_activity.shelf_title }}</h3>
+        {% for book in goodreads_activity.books %}
+          <div class="book">
+            <img src="{{book.m_cover}}"/>
+            <header>{{book.title}}<small> by {{book.author}}</small></header>
+            <article>{{book.description|truncate(end='')}}
+              <a href={{book.link}} target="_blank">...more</a>
+            </article>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}

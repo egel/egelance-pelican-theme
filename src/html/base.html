@@ -83,19 +83,19 @@
         <ul class="nav navbar-nav navbar-right">
           {% if 'tipue_search' in PLUGINS %}
           <li>
-              <span>
-                  <form class="navbar-search" action="/search.html">
-                      <input type="text" class="" placeholder="Search" name="q" id="tipue_search_input" required>
-                  </form>
-              </span>
+            <span>
+              <form class="navbar-search" action="/search.html">
+                <input type="text" class="" placeholder="Search" name="q" id="tipue_search_input" required>
+              </form>
+            </span>
           </li>
           {% endif %}
 
-          <li {%- if output_file == "index.html" %} class="selected"{% endif %}><a href="{{ SITEURL }}">Home</a></li>
+          <li {% if output_file == "index.html" %} class="selected"{% endif %}><a href="{{ SITEURL }}">Home</a></li>
 
           {% if DISPLAY_PAGES_ON_MENU %}
             {% for p in PAGES %}
-            <li {%- if p == page %} class="selected"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+            <li {% if p == page %} class="selected"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
             {% endfor %}
           {% endif %}
 
@@ -104,7 +104,12 @@
             <li><a href="{{ link }}">{{ title }}</a></li>
             {% endfor %}
           {% endif %}
-          <li {% if output_file == ARCHIVES_URL %} class="selected"{% endif %}><a href="{{ SITEURL }}/{% if ARCHIVES_URL %}{{ ARCHIVES_URL }}{% else %}archives.html{% endif %}">Archives</a></li>
+          <li {% if output_file == READING_LIST_URL %} class="selected"{% endif %}>
+            <a href="{{ SITEURL }}/{% if READING_LIST_URL %}{{ READING_LIST_URL }}{% else %}reading_list.html{% endif %}">Reading list</a>
+          </li>
+          <li {% if output_file == ARCHIVES_URL %} class="selected"{% endif %}>
+            <a href="{{ SITEURL }}/{% if ARCHIVES_URL %}{{ ARCHIVES_URL }}{% else %}archives.html{% endif %}">Archives</a>
+          </li>
         </ul>
       </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
