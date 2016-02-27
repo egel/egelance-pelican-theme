@@ -27,6 +27,10 @@ gulp.task('watchers', function() {
     return runSequence('build-styles');
   });
 
+  var htmlWatcher = gulp.watch(buildConfig.app_files.html, function() {
+    return runSequence('copy-html');
+  });
+
   jsWatcher.on('change', function(e) {
     console.log(chalk.yellow('[JS] ' + chalk.yellow(e.path)));
   });
@@ -40,6 +44,11 @@ gulp.task('watchers', function() {
 
   sassWatcher.on('change', function(e) {
     console.log(chalk.yellow('[SASS] ' + chalk.yellow(e.path)));
+  });
+
+  htmlWatcher.on('change', function(e) {
+    runSequence('copy-html');
+    console.log(chalk.yellow('[HTML] ' + chalk.yellow(e.path)));
   });
 });
 

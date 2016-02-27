@@ -1,6 +1,8 @@
 /**
  * This file/module contains all configuration for the build process.
  */
+var PROJECT_THEME_NAME = 'official'
+
 module.exports = {
   /**
    * The `build_dir` folder is where our projects are compiled during
@@ -13,7 +15,7 @@ module.exports = {
   /**
    * Current CSS sub-theme (for many SASS versions of site template)
    */
-  project_theme_name: 'official',
+  project_theme_name: PROJECT_THEME_NAME,
 
   app_files: {
     unitjs: [ 'gulpfile.js', 'build.config.js' , 'gulp_src/**/*.js' ],
@@ -24,11 +26,7 @@ module.exports = {
       // '!src/plugins/**/*.spec.js'
     ],
     fonts: [ 'src/fonts/**/*' ], // Additional fonts that aren't store into vendor libraries
-    // images: [
-      // 'src/plugins/**/*.png',
-      // 'src/plugins/**/*.jpg'
-    // ],
-    // css: [ 'src/plugins/**/*.css' ], // all additional css from plugins
+    sass_all: [ 'src/themes/' + PROJECT_THEME_NAME + '**/*.sass' ], // all additional css from plugins
     html: [ 'src/html/**' ],
     plugins: [ 'src/plugins/tipuesearch/**' ]
   },
