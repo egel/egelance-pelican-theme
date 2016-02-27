@@ -33,11 +33,11 @@ module.exports = {
 
   vendor_files: {
     js: [
-      'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
-      'node_modules/jquery.easing/jquery.easing.js',
       'node_modules/jquery/dist/jquery.js',
+      'node_modules/jquery.easing/jquery.easing.js',
+      'node_modules/lodash/lodash.js',
+      'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
       'node_modules/anchor-js/anchor.js',
-      'node_modules/lodash/lodash.js'
     ],
     css: [
     ],
