@@ -11,6 +11,11 @@
             <span class="published text-muted">· Modified at {{ article.locale_modified }}</span>
           {% endif %}
         {% endif %}
+
+        {% if SHOW_ARTICLE_CATEGORY %}
+          <span class="published text-muted"> · Category</span>
+          <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+        {% endif %}
         <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
 
         {% if DISPLAY_ARTICLE_INFO_ON_INDEX %}
