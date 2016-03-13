@@ -10,14 +10,15 @@ var rename        = require('gulp-rename');
 var sourcemaps    = require('gulp-sourcemaps');
 var uglify        = require('gulp-uglify');
 
+
 gulp.task('build-javascript', function() {
   var filename = 'scripts'
   return gulp.src(buildConfig.vendor_files.js)
-    .pipe(addSrc(buildConfig.app_files.js))
-    .pipe(sourcemaps.init())
+    .pipe(addSrc.append(buildConfig.app_files.js))
     .pipe(plumber())
+    .pipe(sourcemaps.init())
     .pipe(concat(filename + '.js'))
-    .pipe(uglify({ preserveComments: 'license' }))
+    .pipe(uglify())
     .pipe(rename({ extname: '.min.js' }))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(buildConfig.build_dir + '/static/js/'));
