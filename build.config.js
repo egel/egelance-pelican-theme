@@ -9,8 +9,8 @@ module.exports = {
    * development and the `compile_dir` folder is where our app resides once it's
    * completely built.
    */
-  build_dir:    'build',
-  tmp_dir:      'tmp',
+  build_dir:  'build',
+  tmp_dir:    'tmp',
 
   /**
    * Current CSS sub-theme (for many SASS versions of site template)
@@ -33,7 +33,7 @@ module.exports = {
     js: [
       'node_modules/jquery/dist/jquery.js',
       'node_modules/jquery.easing/jquery.easing.js',
-      'node_modules/lodash/lodash.js',
+      // 'node_modules/lodash/lodash.js',
       'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
       'node_modules/anchor-js/anchor.js'
     ],
