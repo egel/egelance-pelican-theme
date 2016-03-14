@@ -5,7 +5,6 @@
 /**
  *  Import external fonts
  */
-@import url(http://fonts.googleapis.com/css?family=Lobster+Two)
 @import url(https://fonts.googleapis.com/css?family=Lato:300)
 @import url(https://fonts.googleapis.com/css?family=PT+Sans)
 @import url(https://fonts.googleapis.com/css?family=Satisfy)
@@ -35,9 +34,6 @@ $theme-emerald:           #53BF83
 /********************************
  * Mixins
  */
-@mixin font-lobster
-  font-family: 'Lobster Two', cursive
-
 @mixin font-lato-300
   font-family: 'Lato', sans-serif
   font-weight: 300
@@ -349,6 +345,8 @@ ul
   padding:          $navbar-brand-padding/2
   padding-left:     $navbar-brand-padding
   float:            left
+  @media (max-width: $screen-sm-min)
+    padding: 10px 10px !important
 
   img
     padding-right:  10px
@@ -365,6 +363,9 @@ ul
 
 
   ul.nav
+    @media (max-width: $screen-sm-min)
+      padding-top: 20px
+
     > li
       > a
         font-size:        14px
@@ -395,8 +396,9 @@ nav.navbar
   margin-top: $navbar-height/2
 
 #sidebar
-  border-right: 2px dotted $gray-lighter
   margin-bottom: 40px
+  @media (min-width: $screen-sm-min)
+    border-right: 2px dotted $gray-lighter
 
   ul
     list-style-type: none
@@ -431,7 +433,6 @@ nav.navbar
 
 
   .navbar-brand
-    @include font-lobster
     font-size:        $navbar-brand-font-size
     padding-left:     7px
     padding-right:    0
@@ -648,6 +649,8 @@ $content-padding-top:   20px
 .articles-list
   padding-top:  $content-padding-top
   padding-left: $content-padding-left
+  @media (max-width: $screen-xs-max)
+    padding: 0
 
   hr
     margin: 0
@@ -688,6 +691,8 @@ $content-padding-top:   20px
 #content
   padding-left: $content-padding-left
   padding-top:  $content-padding-top
+  @media (max-width: $screen-xs-max)
+    padding: 0
 
   // h1, h2, h3, h4, h5, h6
   //   @include link-visited
@@ -724,9 +729,15 @@ $content-padding-top:   20px
 
   .year
     font-size:  $font-size-large
+    @media (max-width: $screen-xs-max)
+      padding: 0
+      margin: 2px 15px
+      border-bottom: 1px solid #eee
 
   .month, .day
     font-size:  $font-size-base
+    @media (max-width: $screen-xs-max)
+      padding: 2px 0
 
   footer
     padding:  0
