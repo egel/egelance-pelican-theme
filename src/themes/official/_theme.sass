@@ -350,32 +350,33 @@ dl
  * Top navigation
  */
 // ----------------------------------------------------------------------------
+// General settings
 .navbar-brand
   @include font-satisfy
-  font-size:        $navbar-brand-font-size
-  padding:          $navbar-brand-padding/2
-  padding-left:     $navbar-brand-padding
-  float:            left
+  font-size :       $navbar-brand-font-size
+  padding :         $navbar-brand-padding/2
+  padding-left :    $navbar-brand-padding
+  float :           left
   @media (max-width: $screen-sm-min)
-    padding: 10px 10px !important
+    padding : 10px 10px !important
 
   img
-    padding-right:  10px
-    padding-top:    5px
-    height:         45px
-    display:        inline
-    float:          left
+    padding-right :  10px
+    padding-top :    5px
+    height :         45px
+    display :        inline
+    float :          left
 
 
 #navbar
-  margin-bottom:    0px
-  background-color: transparent
-  border:           none
+  margin-bottom : 0px
+  background-color : transparent
+  border : none
 
 
   ul.nav
     @media (max-width: $screen-sm-min)
-      padding-top: 20px
+      padding-top : 20px
 
     > li
       > a
@@ -437,20 +438,19 @@ nav.navbar
 
 /* Small devices (phones only 480px and less) */
 @media (max-width: $screen-sm-min)
-
   .navbar
     .container-fluid
       padding: 0
 
 
   .navbar-brand
-    font-size:        $navbar-brand-font-size
-    padding-left:     7px
-    padding-right:    0
-    padding-top:      $navbar-brand-padding
-    padding-bottom:   $navbar-brand-padding
-    float:            left
-    min-width:        270px
+    font-size :       $navbar-brand-font-size
+    padding-left :    7px
+    padding-right :   0
+    padding-top :     $navbar-brand-padding
+    padding-bottom :  $navbar-brand-padding
+    float :           left
+    width :           auto
 
     img
       padding-right:  10px
@@ -570,12 +570,12 @@ nav.navbar
 
 // ----------------------------------------------------------------------------
 // #intro
-$intro-header-lg-height: 400px
-$intro-header-md-height: 300px
-$intro-header-sm-height: 200px
+$intro-header-lg-height : 400px
+$intro-header-md-height : 300px
+$intro-header-sm-height : 200px
+$intro-header-xs-height : $intro-header-sm-height
 
 .intro-header
-  // background-image: url('http://i2.pinger.pl/pgr26/7419f1b10004314d50b6853d/kosmos_1920x1200_2.jpg')
   background-image: url('/extras/laptop-notebook-clean-hero.jpg') // taken from https://static.pexels.com/photos/7109/laptop-notebook-clean-hero.jpg
   background-size: cover
   background-position: left
@@ -583,15 +583,19 @@ $intro-header-sm-height: 200px
   height:   $intro-header-lg-height
   padding:  $intro-header-lg-height/3 0
 
-  /* Small devices (tablets, 768px and down) */
+  /* Small devices (tablets, 992px and down) */
   @media (max-width: $screen-md-min)
     height:   $intro-header-md-height
     padding:  $intro-header-md-height/3 0
 
-  /* Small devices (phones only 480px and less) */
+  /* Small devices (phones only 768px and less) */
   @media (max-width: $screen-sm-min)
     height:   $intro-header-sm-height
     padding:  $intro-header-sm-height/4 0
+
+  @media (max-width: $screen-xs-min)
+    height  : $intro-header-xs-height
+    padding : $intro-header-xs-height/10 0
 
   .site-heading
     h1
