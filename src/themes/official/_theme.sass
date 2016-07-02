@@ -407,10 +407,8 @@ nav.navbar
 #master-container
   margin-top: $navbar-height/2
 
-#sidebar
+.sidebar
   margin-bottom: 40px
-  @media (min-width: $screen-sm-min)
-    border-right: 2px dotted $gray-lighter
 
   ul
     list-style-type: none
@@ -418,6 +416,36 @@ nav.navbar
   h4
     margin-top:     20px
     margin-bottom:  10px
+
+.sidebar-sm
+  border-right : 2px dotted $gray-lighter
+
+
+/**
+ * Fix for double sidebar depends on which resolution you use
+ */
+@media (min-width: $screen-md-min)
+  .sidebar-tablet
+    display : block
+
+  .sidebar-phone
+    display : none !important
+
+@media (max-width: $screen-sm-min)
+  .sidebar-tablet
+    display : none !important
+
+@media (min-width: $screen-sm-min)
+  .sidebar-phone
+    display : none !important
+
+@media (max-width: $screen-xs-min)
+  .sidebar-tablet
+    display : none !important
+
+  .sidebar-phone
+    display : block
+
 
 
 /* Small devices (tablets, 768px and down) */

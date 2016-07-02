@@ -131,7 +131,7 @@
   <div class="container">
     <div class="row">
       {% if not HIDE_SIDEBAR or ABOUT_ME %}
-      <div class="col-sm-3" id="sidebar">
+      <div class="col-sm-3 sidebar sidebar-tablet">
         {% if ABOUT_ME %}
           {% include 'includes/aboutme.html' %}
         {% endif %}
@@ -153,6 +153,27 @@
       </div>
     </div>
   </div>
+
+  {#
+    This part is duplicate and related to above, to resolve order of the
+    elements on webpage.
+  #}
+  {% if not HIDE_SIDEBAR or ABOUT_ME %}
+  <div class="container sidebar-phone">
+    <div class="row">
+      <div class="col-xs-12 sidebar">
+        {% if ABOUT_ME %}
+          {% include 'includes/aboutme.html' %}
+        {% endif %}
+
+        {% if not HIDE_SIDEBAR %}
+          {% include 'includes/sidebar.html' %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
   {% include 'includes/footer.html' %}
 
   <script src="{{ SITEURL }}/theme/js/scripts.min.js"></script>
