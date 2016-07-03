@@ -130,10 +130,11 @@
 
   <div class="container">
     <div class="row">
-      {% if not HIDE_SIDEBAR or ABOUT_ME %}
+      {% if not HIDE_SIDEBAR or DISPLAY_ABOUT_ME_ON_SIDEBAR %}
       <div class="col-sm-3 sidebar sidebar-tablet">
-        {% if ABOUT_ME %}
+        {% if DISPLAY_ABOUT_ME_ON_SIDEBAR and 'about-me.html' not in output_file %}
           {% include 'includes/aboutme.html' %}
+          {% include 'includes/social_icons.html' %}
         {% endif %}
 
         {% if not HIDE_SIDEBAR %}
@@ -162,8 +163,9 @@
   <div class="container sidebar-phone">
     <div class="row">
       <div class="col-xs-12 sidebar">
-        {% if ABOUT_ME %}
+        {% if DISPLAY_ABOUT_ME_ON_SIDEBAR and 'about-me.html' not in output_file %}
           {% include 'includes/aboutme.html' %}
+          {% include 'includes/social_icons.html' %}
         {% endif %}
 
         {% if not HIDE_SIDEBAR %}

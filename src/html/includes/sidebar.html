@@ -3,24 +3,7 @@
 {% endif %}
 
 <section>
-  <ul class="list-group" id="social-list">
-    {% if SOCIAL %}
-    <li>
-      <ul class="list-inline" id="social">
-        {% for name, link in SOCIAL %}
-          {% set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') %}
-          {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow', 'weibo'] %}
-            {% set iconattributes = '"fa fa-' ~ name_sanitized ~ ' fa-lg"' %}
-          {% else %}
-            {% set iconattributes = '"fa fa-' ~ name_sanitized ~ '-square fa-lg"' %}
-          {% endif %}
-        <li ><a href="{{ link }}" target="_blank"><i class={{ iconattributes }}></i></a></li>
-        {% endfor %}
-        {% if FEED_ALL_ATOM %}<li><a href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" title="Feed atom" target="_blank"><i class="fa fa-lg fa-rss-square"></i></a></li>{% endif %}
-      </ul>
-    </li>
-    {% endif %}
-
+  <ul class="list-group">
     {% if DISPLAY_SEARCH_ON_SIDEBAR %}
       {% if 'tipue_search' in PLUGINS %}
       <li>

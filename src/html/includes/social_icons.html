@@ -1,0 +1,18 @@
+{% if SOCIAL %}
+  <ul class="list-group social-list">
+    <li>
+      <ul class="list-inline" id="social">
+        {% for name, link in SOCIAL %}
+          {% set name_sanitized = name|lower|replace('+','-plus')|replace(' ','-') %}
+          {% if name_sanitized in ['flickr', 'spotify', 'stack-overflow', 'weibo'] %}
+            {% set iconattributes = '"fa fa-' ~ name_sanitized ~ ' fa-lg"' %}
+          {% else %}
+            {% set iconattributes = '"fa fa-' ~ name_sanitized ~ '-square fa-lg"' %}
+          {% endif %}
+        <li ><a href="{{ link }}" target="_blank"><i class={{ iconattributes }}></i></a></li>
+        {% endfor %}
+        {% if FEED_ALL_ATOM %}<li><a href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" title="Feed atom" target="_blank"><i class="fa fa-lg fa-rss-square"></i></a></li>{% endif %}
+      </ul>
+    </li>
+  </ul>
+{% endif %}

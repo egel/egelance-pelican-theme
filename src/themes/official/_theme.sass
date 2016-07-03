@@ -137,6 +137,7 @@ $navbar-brand-font-size:  $font-size-big
 $navbar-brand-padding:    20px
 $navbar-list-padding:     ($navbar-height - $line-height-base * $font-size-base)/2
 
+$site-border-color: #eee
 
 
 //== Buttons
@@ -402,7 +403,6 @@ nav.navbar
   margin-top:     20px
   padding-bottom: 20px
   border: none
-  // border-bottom: 2px dotted #eee
 
 #master-container
   margin-top: $navbar-height/2
@@ -424,6 +424,20 @@ nav.navbar
 /**
  * Fix for double sidebar depends on which resolution you use
  */
+
+.sidebar-phone
+  margin-top: 20px
+  border-top: 2px dotted $site-border-color
+
+  .aboutme
+    clear: both
+    height: auto
+    overflow: auto
+
+    img
+      margin-right: 20px
+      float : left !important
+
 @media (min-width: $screen-md-min)
   .sidebar-tablet
     display : block
@@ -706,7 +720,7 @@ $content-padding-top:   20px
     padding-top:    30px
     padding-bottom: 30px
     margin-bottom:  10px
-    border-bottom:  2px dotted #eee
+    border-bottom:  2px dotted $site-border-color
     clear: both
 
     .summary
@@ -740,7 +754,6 @@ $content-padding-top:   20px
   // h1, h2, h3, h4, h5, h6
   //   @include link-visited
 
-
   h1, h2
     margin-bottom: 20px
 
@@ -760,6 +773,12 @@ $content-padding-top:   20px
     max-width: 100%
     height: auto
 
+  .avatar
+    $aboutme-page-avatar-width: 100px
+    width : $aboutme-page-avatar-width
+    float : left
+    margin-right : 20px
+    @include border-radius($aboutme-page-avatar-width)
 
 /**
  * Archives section
@@ -778,7 +797,7 @@ $content-padding-top:   20px
     @media (max-width: $screen-xs-max)
       padding: 0
       margin: 2px 15px
-      border-bottom: 1px solid #eee
+      border-bottom: 1px solid $site-border-color
 
   .month, .day
     font-size:  $font-size-base
@@ -810,16 +829,23 @@ $content-padding-top:   20px
       margin-right: 20px
 
 
+// aboutme
+.aboutme
+  $sidebar-avarar-width: 100px
+  .avatar
+    width : $sidebar-avarar-width
+    @include border-radius($sidebar-avarar-width)
 /**
  * Footer section
  */
 // ----------------------------------------------------------------------------
 footer
+  margin-top: 30px
+  padding-top: 20px
+  padding-bottom: 20px
   background:     transparent
   color:          $gray-dark
   bottom:         0
-  padding-top:    20px
-  padding-bottom: 20px
 
 .footer
   background-color:   $gray-dark
@@ -838,3 +864,4 @@ footer
     > div
       margin: 0
       padding: 0
+
