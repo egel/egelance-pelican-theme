@@ -317,6 +317,12 @@ ul
   list-style-position : inside
   padding-left : 18px
 
+  li
+
+    p
+      display: inline
+      clear: none
+
 dl
   margin-top : 20px
   margin-bottom : 10px
@@ -769,6 +775,9 @@ $content-padding-top:   20px
     ul, ol
       list-style-position: inside
 
+      li
+        margin-bottom: 10px
+
   img
     max-width: 100%
     height: auto
@@ -840,17 +849,17 @@ $content-padding-top:   20px
  */
 // ----------------------------------------------------------------------------
 footer
-  margin-top: 30px
   padding-top: 20px
   padding-bottom: 20px
   background:     transparent
   color:          $gray-dark
   bottom:         0
 
-.footer
-  background-color:   $gray-dark
-  color:              $theme-bone
-  height:             $site-footer-height
+  &.footer
+    margin-top: 30px
+    background-color:   $gray-dark
+    color:              $theme-bone
+    height:             $site-footer-height
 
 /**
  * Debug override
