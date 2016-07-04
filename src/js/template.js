@@ -8,18 +8,24 @@ anchors.options = {
   icon:       '¶'
 };
 
-anchors.add('.single-article h2');
-anchors.add('.single-article h3');
-anchors.add('.single-article h4');
-anchors.add('.single-article h5');
-anchors.add('.single-article h6');
-anchors.remove('.no-anchor');
-anchors.remove('#sidebar h1');
-anchors.remove('#sidebar h2');
-anchors.remove('#sidebar h3');
-anchors.remove('#sidebar h4');
-anchors.remove('#sidebar h5');
-anchors.remove('#sidebar h6');
+anchors.add('.single-article h2')
+anchors.add('.single-article h3')
+anchors.add('.single-article h4')
+anchors.add('.single-article h5')
+anchors.add('.single-article h6')
+anchors.remove('.no-anchor')
+anchors.remove('#sidebar h1')
+anchors.remove('#sidebar h2')
+anchors.remove('#sidebar h3')
+anchors.remove('#sidebar h4')
+anchors.remove('#sidebar h5')
+anchors.remove('#sidebar h6')
+anchors.remove('.well h1')
+anchors.remove('.well h2')
+anchors.remove('.well h3')
+anchors.remove('.well h4')
+anchors.remove('.well h5')
+anchors.remove('.well h6')
 
 
 $(document).ready(function(){
