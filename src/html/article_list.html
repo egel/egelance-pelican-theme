@@ -16,6 +16,10 @@
           <span class="published text-muted"> · Category</span>
           <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
         {% endif %}
+
+        {% if SHOW_ARTICLE_READTIME %}
+        <span class="published text-muted"> · {{ article.stats['read_mins'] }} {% if article.stats['read_mins'] == 1 %}minute{% else %}minutes{% endif %}</span>
+        {% endif %}
         <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
 
         {% if DISPLAY_ARTICLE_INFO_ON_INDEX %}
