@@ -1,6 +1,5 @@
 # ############# Project files/directories
 tmp/
-vendor/
 bin/
 build/
 
@@ -11,6 +10,10 @@ build/
 # Logs
 logs
 *.log
+
+# Editors
+.idea/
+
 
 # Runtime data
 pids
@@ -48,7 +51,6 @@ __pycache__/
 # Distribution / packaging
 .Python
 env/
-build/
 develop-eggs/
 dist/
 downloads/
@@ -86,9 +88,6 @@ coverage.xml
 # Translations
 *.mo
 *.pot
-
-# Django stuff:
-*.log
 
 # Sphinx documentation
 docs/_build/
