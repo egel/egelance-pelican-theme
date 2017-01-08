@@ -1,0 +1,3 @@
+[submodule "gulp_src"]
+	path = gulp_src
+	url = https://github.com/egel/gulp-pelican-theme.git
