@@ -2,6 +2,7 @@
 tmp/
 bin/
 build/
+gulpfile.js # due to symlink from gulp-src
 
 # ############ Sass
 .sass-cache/
