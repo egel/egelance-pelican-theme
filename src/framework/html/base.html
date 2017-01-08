@@ -53,7 +53,7 @@
   {% include 'includes/twitter_cards.html' %}
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/styles.css" type="text/css"/>
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/@generatedCssFilename@" type="text/css"/>
   {# <link href="{{ SITEURL }}/theme/css/disable-boostrap-pre-for-pygments.css" rel="stylesheet"> #}
   {# <link href="{{ SITEURL }}/theme/css/pygments-{{ PYGMENTS_STYLE|default('native') }}.css" rel="stylesheet"> #}
   {% if FEED_ALL_ATOM %}
@@ -157,7 +157,7 @@
 
   {#
     This part is duplicate and related to above, to resolve order of the
-    elements on webpage.
+    elements on webpage. When switch to FLEX I can user order
   #}
   {% if not HIDE_SIDEBAR or ABOUT_ME %}
   <div class="container sidebar-phone">
@@ -178,7 +178,7 @@
 
   {% include 'includes/footer.html' %}
 
-  <script src="{{ SITEURL }}/theme/js/scripts.min.js"></script>
+  <script src="{{ SITEURL }}/theme/js/@generatedJsFilename@"></script>
 
   {% include 'includes/disqus_script.html' %}
   {% include 'includes/ga.html' %}

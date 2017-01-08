@@ -1,32 +1,38 @@
 // Disable bootstrap pre for pygments
-.highlight
-  width: 100%
+.highlight {
+  width: 100%;
 
-  .linenos
-    width: auto
+  .linenos {
+    width: auto;
+  }
 
   .pre,
   pre,
   code,
   .linenodiv pre,
-  .linenodiv code
-    border-radius: 0
-    background-color: transparent
-    border: none
+  .linenodiv code {
+    border-radius: 0;
+    background-color: transparent;
+    border: none;
+  }
 
-  .highlight
+  .highlight {
     legend,
-    pre
-      color: #eee
+    pre {
+      color: #eee;
+    }
+  }
 
-  .code-line
+  .code-line {
     // background-color: #333
-    color: #e4e4e4
+    color: #e4e4e4;
+  }
+}
 
 // For use with the code_line-number_word-wrap_switcher_jquery.js Pelican
 // plugin
-code
-  overflow: auto
+code {
+  overflow: auto;
 
   // This uses `white-space: pre-wrap` to get elements within <pre> tags to
   // wrap. Python, for code chunks within three backticks (```), doesn't
@@ -34,11 +40,11 @@ code
   // don't wrap by default. See https://github.com/github/markup/issues/168 ,
   // which is specifically about this parsing issue, even though that link's
   // discussion is talking about GitHub.
-  white-space: pre-wrap       // css-3
-  white-space: -moz-pre-wrap  // Mozilla, since 1999
-  white-space: -pre-wrap      // Opera 4-6
-  white-space: -o-pre-wrap    // Opera 7
-  word-wrap: break-word       // Internet Explorer 5.5+
+  white-space: pre-wrap; // css-3
+  white-space: -moz-pre-wrap; // Mozilla, since 1999
+  white-space: -o-pre-wrap; // Opera 7
+  word-wrap: break-word; // Internet Explorer 5.5+
+}
 
 // Following
 // http://bililite.com/blog/2012/08/05/line-numbering-in-pre-elements/, use CSS

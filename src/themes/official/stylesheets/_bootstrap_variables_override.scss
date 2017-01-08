@@ -1,0 +1,97 @@
+/******************************************************************************
+ * Bootstrap variables
+ */
+
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+$brand-primary:   $theme-red-solarized;
+$brand-success:   $theme-green-dark;
+$brand-info:      #5bc0de;
+$brand-warning:   #f0ad4e;
+$brand-danger:    #d9534f;
+
+// Sub-theme COLORS
+
+
+//== Scaffolding
+//
+// ## Settings for some of the most global styles.
+
+//** Background color for `<body>`.
+$body-bg:               #fff;
+
+//** Global text color on `<body>`.
+$text-color:            $gray-dark;
+
+//** Global textual link color.
+$link-color:            $brand-primary;
+//** Link hover color set via `darken()` function.
+$link-hover-color:      darken($link-color, 15%);
+
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+$font-family-sans-serif:  "PT Sans", Helvetica, Arial, sans-serif;
+$font-family-serif:       Georgia, "Times New Roman", Times, serif;
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+$font-family-base:        $font-family-sans-serif;
+
+$icon-font-path: "../fonts/";
+//$icon-font-path: "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/fonts/"
+
+$font-size-hulk:     ceil(($font-size-base * 3.4)); // ~18px
+$font-size-huge:     ceil(($font-size-base * 2.9)); // ~18px
+$font-size-bigger:   ceil(($font-size-base * 1.9)); // ~18px
+$font-size-big:      ceil(($font-size-base * 1.5)); // ~18px
+$font-size-large:    ceil(($font-size-base * 1.25)); // ~18px
+$font-size-base:     18px;
+$font-size-small:    ceil(($font-size-base * 0.85)); // ~12px
+$font-size-smaller:  ceil(($font-size-base * 0.65)); // ~12px
+
+
+//== Navbar
+//
+//##
+
+// Basics of a navbar
+$navbar-height:          40px;
+
+$navbar-default-color:   #777;
+$navbar-default-bg:      #fff;
+$navbar-default-border:  darken($navbar-default-bg, 6.5%);
+
+// Navbar links
+$navbar-default-link-color:                #262626;
+$navbar-default-link-hover-color:          #262626;
+$navbar-default-link-hover-bg:             #fff;
+$navbar-default-link-active-color:         $brand-primary;
+$navbar-default-link-active-bg:            #fff;
+$navbar-default-link-disabled-color:       #ccc;
+$navbar-default-link-disabled-bg:          transparent;
+
+// Navbar brand label
+$navbar-default-brand-color:               $navbar-default-link-color;
+$navbar-default-brand-hover-color:         darken($navbar-default-brand-color, 10%);
+$navbar-default-brand-hover-bg:            transparent;
+
+// Navbar toggle
+$navbar-default-toggle-border-color:       $brand-primary;
+$navbar-default-toggle-hover-bg:           #fff;
+$navbar-default-toggle-icon-bar-bg:        #222;
+
+$navbar-brand-font-size: $font-size-big;
+$navbar-brand-padding: 20px;
+$navbar-list-padding: ($navbar-height - $line-height-base * $font-size-base) / 2;
+
+$site-border-color: #eee;
+
+
+//== Buttons
+//
+//##
+$btn-primary-color:              #fff;
+$btn-primary-bg:                 $brand-primary;
+$btn-primary-border:             darken($btn-primary-bg, 5%);

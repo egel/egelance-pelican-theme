@@ -1,0 +1,870 @@
+/******************************************************************************
+ * Sub-theme variables
+ */
+$img_path:      '../images/';
+$logo_height:   90px;
+$logo_padding:  7px;
+
+$header-top-height: 25px;
+$header-top-bottom-padding: ($header-top-height - $line-height-base * $font-size-base)/2 + 1;
+
+$content-padding-top:   20px;
+$content-padding-left:  $content-padding-top;
+
+$site-footer-height: auto;
+
+/******************************************************************************
+ *  Mixins (Local)
+ */
+@mixin menu-link-visited {
+  background: transparent;
+  text-decoration: none !important;
+  color: lighten($gray-dark, 30%);
+}
+
+@mixin menu-hover-active-focus {
+  text-decoration: none !important;
+  background: transparent;
+  color: lighten($theme-yellow, 30%) !important; // $brand-primary
+}
+
+// regular links
+@mixin link-visited {
+  background: transparent;
+  text-decoration: none !important;
+  color: lighten($gray-darker, 18%);
+}
+
+@mixin hover-active-focus {
+  text-decoration: none !important;
+  background: transparent;
+  color: $brand-primary;
+}
+
+
+/******************************************************************************
+ *  Body override
+ */
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background-color: $body-bg;
+  font-family: $font-family-sans-serif;
+
+  // any link in the webpage e
+  // exceptions are costomize below in specific areas
+  // a
+  //   &:link, &:visited
+  //     color:              $link-color
+  //     background-color:   transparent
+  //     text-decoration:    none !important
+
+  //   &:hover, &:active, &:focus
+  //     color:              $link-hover-color
+  //     background-color:   transparent
+  //     text-decoration:    underline
+}
+
+
+/**
+ *  Adjust for all elements
+ */
+// ----------------------------------------------------------------------------
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include font-open-sans-800;
+  @include link-visited;
+  margin-top: 2px;
+  margin-bottom: 0;
+
+  a {
+    &:link,
+    &:visited {
+      @include link-visited
+    }
+
+    &:hover,
+    &:active {
+      @include hover-active-focus
+    }
+  }
+}
+
+h1 {
+  font-size: 36px
+}
+
+h2 {
+  font-size: 28px
+}
+
+h3 {
+  font-size: 22px
+}
+
+header.page-header,
+h1.page-header,
+h2.page-header,
+h3.page-header {
+  margin: 0;
+  border: none;
+}
+
+
+
+/**
+ * Typography override
+ */
+// ----------------------------------------------------------------------------
+code,
+pre,
+.pre {
+  @include border-radius(0);
+  border: none;
+  padding: 5px;
+  margin: 2px 0px;
+  background-color: $gray-lighter;
+  color: $theme-red-solarized;
+}
+
+code {
+  padding: 2px 5px;
+}
+
+pre {
+  margin: 10px 0;
+  padding: 5px;
+}
+
+.page-header {
+  margin-top: 60px;
+
+  &:first-child {
+    margin-top: 0px;
+  }
+}
+
+.row {
+  margin-top: 10px;
+}
+
+.row-nonmargin-nonpaddign { // FIXME: remove or reduce
+  margin: 0;
+  padding: 0;
+}
+
+.vertical-center {
+  min-height: 100%; // Fallback for browsers do NOT support vh unit
+  min-height: 100vh; // These two lines are counted as one :-)
+  display: flex;
+  align-items: center;
+}
+
+hr {
+  &.main-separator {
+    max-width: 50px;
+    border-color: $brand-primary;
+    border-width: 3px;
+  }
+
+  &.small {
+    max-width: 100px;
+    margin: 15px auto;
+    border-width: 4px;
+    border-color: $theme-bone;
+  }
+}
+
+.display-none { // FIXME: remove or reduce
+  display: none !important
+}
+
+ul {
+  list-style-position: inside;
+  padding-left: 18px;
+
+  li {
+    p {
+      display: inline;
+      clear: none;
+    }
+  }
+}
+
+dl {
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+  dt {
+    font-weight: 700;
+  }
+
+  dd {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+  }
+}
+
+/**
+ * Custom button class
+ */
+// ----------------------------------------------------------------------------
+.btn-inverse-default {
+  @include button-inverse-variant(#fff, $btn-default-color, $btn-default-bg, $btn-default-border, $btn-default-border)
+}
+
+.btn-inverse-primary {
+  @include button-inverse-variant(#fff, $btn-primary-color, $btn-primary-bg, $btn-primary-border, $btn-primary-border)
+}
+
+.btn-inverse-primary-no2 {
+  @include button-inverse-variant($btn-primary-border, $btn-primary-color, $btn-primary-bg, $btn-primary-border, $btn-primary-border)
+}
+
+
+/**
+ * Top navigation
+ */
+// ----------------------------------------------------------------------------
+// General settings
+.navbar-brand {
+  @include font-satisfy;
+  font-size:       $navbar-brand-font-size;
+  padding:         $navbar-brand-padding/2;
+  padding-left:    $navbar-brand-padding;
+  float:           left;
+
+  @media (max-width: $screen-sm-min) {
+    padding: 10px !important
+  }
+
+  img {
+    padding-right:  10px;
+    padding-top:    5px;
+    height:         45px;
+    display:        inline;
+    float:          left;
+  }
+}
+
+
+#navbar {
+  margin-bottom: 0px;
+  background-color: transparent;
+  border: none;
+
+  ul.nav {
+    @media (max-width: $screen-sm-min) {
+      padding-top: 20px;
+    }
+
+
+    > li {
+      > a {
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        height: $navbar-height;
+        padding-top: $navbar-list-padding !important;
+        padding-bottom: $navbar-list-padding !important;
+
+        // &:link, &:visited
+        //   @include link-visited;
+
+        // &:hover, &:active //, &:focus
+        //   @include hover-active-focus;
+      }
+    }
+
+    &.active,
+    &.selected {
+      > a,
+      > a.active {
+        @include hover-active-focus;
+      }
+    }
+  }
+}
+
+nav {
+  &.navbar {
+    margin-bottom: 0;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border: none;
+  }
+}
+
+#master-container {
+  margin-top: $navbar-height/2;
+}
+
+.sidebar {
+  margin-bottom: 40px;
+
+  ul {
+    list-style-type: none;
+  }
+
+  h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+.sidebar-sm {
+  border-right: 2px dotted $gray-lighter;
+}
+
+/**
+ * Fix for double sidebar depends on which resolution you use
+ */
+
+.sidebar-phone {
+  margin-top: 20px;
+  border-top: 2px dotted $site-border-color;
+
+  .aboutme {
+    clear: both;
+    height: auto;
+    overflow: auto;
+
+    img {
+      margin-right: 20px;
+      float: left !important;
+    }
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .sidebar-tablet {
+    display: block;
+  }
+
+  .sidebar-phone {
+    display: none !important;
+  }
+}
+
+@media (max-width: $screen-sm-min) {
+  .sidebar-tablet {
+    display: none !important;
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .sidebar-phone {
+    display: none !important;
+  }
+}
+
+@media (max-width: $screen-xs-min) {
+  .sidebar-tablet {
+    display: none !important;
+  }
+
+  .sidebar-phone {
+    display: block;
+  }
+}
+
+
+/* Small devices (tablets, 768px and down) */
+@media (max-width: $screen-md-min) {
+  .navbar {
+    .container {
+      padding: 0 !important;
+    }
+
+    .navbar-header {
+      margin: 0 !important;
+    }
+
+    .navbar-collapse {
+      margin: 0;
+    }
+  }
+
+  #navbar {
+    width: 100%;
+  }
+}
+
+/* Small devices (phones only 480px and less) */
+@media (max-width: $screen-sm-min) {
+  .navbar {
+    .container-fluid {
+      padding: 0;
+    }
+  }
+
+  .navbar-brand {
+    font-size: $navbar-brand-font-size;
+    padding-top: $navbar-brand-padding;
+    padding-right: 0;
+    padding-bottom: $navbar-brand-padding;
+    padding-left: 7px;
+    float: left;
+    width: auto;
+
+    img {
+      padding-right: 10px;
+      padding-top: 5px;
+      height: 45px;
+      display: inline;
+      float: left;
+    }
+
+    .text-primary {
+      font-size: 50%;
+
+      > .prefix {
+        text-transform: lowercase;
+        font-size: 80%;
+      }
+    }
+
+    .text-secondary {
+      font-size: 50%;
+    }
+  }
+
+  .navbar-custom {
+    .ul.nav.navbar-nav {
+      > li {
+        > a {
+          height: auto;
+          padding-top: 15px;
+          padding-bottom: 15px;
+        }
+      }
+    }
+  }
+
+  .navbar-header {
+    .navbar-toggle {
+      margin-right: 7px;
+    }
+  }
+
+  .navbar-nav {
+    margin: 0;
+  }
+
+  .navbar-collapse {
+    padding: 0;
+  }
+
+  .intro {
+    .container {
+      padding-right: -15px;
+      padding-left: -15px;
+    }
+
+    img {
+      text-align: right;
+    }
+
+    h1 {
+      font-size: 200%;
+    }
+
+    h3 {
+      font-size: 140%;
+    }
+  }
+
+  .scrollToTop {
+    display: none !important;
+  }
+
+  footer {
+    height: auto;
+  }
+}
+
+.navbar-collapse .in {
+  overflow-y: hidden // fix vertical scrollbar on phone media screen;
+}
+
+
+/**
+ * Customize the logo
+ */
+// ----------------------------------------------------------------------------
+.company-brand {
+  position: relative;
+}
+
+
+/**
+ * Back to top button
+ */
+// ----------------------------------------------------------------------------
+.scrollToTop {
+  width: 70px;
+  height: 70px;
+  padding: 25px;
+  text-align: center;
+  font-weight: bold;
+  color: #f4f4f4;
+  text-decoration: none;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  display: none;
+  background-color: $gray;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+
+  &:hover {
+    background-color: $gray-dark;
+    text-decoration: none;
+    color: $brand-primary;
+  }
+}
+
+
+// ----------------------------------------------------------------------------
+// #intro
+$intro-header-lg-height : 400px;
+$intro-header-md-height : 300px;
+$intro-header-sm-height : 200px;
+$intro-header-xs-height : $intro-header-sm-height;
+
+.intro-header {
+  background-image: url('/extras/laptop-notebook-clean-hero.jpg'); // taken from https://static.pexels.com/photos/7109/laptop-notebook-clean-hero.jpg
+  background-size: cover;
+  background-position: left;
+  text-align: center;
+  height: $intro-header-lg-height;
+  padding: $intro-header-lg-height/3 0;
+
+  /* Small devices (tablets, 992px and down) */
+  @media (max-width: $screen-md-min) {
+    height: $intro-header-md-height;
+    padding: $intro-header-md-height/3 0;
+  }
+
+  /* Small devices (phones only 768px and less) */
+  @media (max-width: $screen-sm-min) {
+    height: $intro-header-sm-height;
+    padding: $intro-header-sm-height/4 0;
+  }
+
+  @media (max-width: $screen-xs-min) {
+    height: $intro-header-xs-height;
+    padding: $intro-header-xs-height/10 0;
+  }
+
+  .site-heading {
+    h1 {
+      @include font-ptsans;
+      color: $theme-bone;
+      font-size: $font-size-hulk*1.5;
+
+      /* Small devices (tablets, 768px and down) */
+      @media (max-width: $screen-md-min) {
+        font-size: $font-size-huge;
+      }
+
+      /* Small devices (phones only 480px and down) */
+      @media (max-width: $screen-sm-min) {
+        font-size: $font-size-bigger;
+      }
+    }
+  }
+
+  hr {
+    &.small {
+      border-color: $brand-primary;
+    }
+  }
+
+  span {
+    &.subheading {
+      @include font-lato-300;
+      color: $theme-red-solarized;
+      font-size: $font-size-large;
+
+      /* Small devices (phones only 480px and less) */
+      @media (max-width: $screen-sm-min) {
+        font-size: $font-size-base;
+      }
+    }
+  }
+
+  .panel {
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+
+    .panel-body {
+      padding: 0;
+    }
+  }
+}
+
+.published {
+  @include font-ptsans;
+}
+
+.summary {
+  padding-top: 15px;
+}
+
+.intro-article-image-xs {
+  @include intro-article-image(30px, 10px);
+}
+
+.intro-article-image-sm {
+  @include intro-article-image(115px, 10px);
+}
+
+.intro-article-image-md {
+  @include intro-article-image(160px, 10px);
+}
+
+.intro-article-image-lg {
+  @include intro-article-image(280px, 10px);
+}
+
+.intro-article-image-hg {
+  @include intro-article-image(400px, 10px);
+}
+
+
+/**
+ * articles list section
+ */
+// ----------------------------------------------------------------------------
+.articles-list {
+  padding-top: $content-padding-top;
+  padding-left: $content-padding-left;
+
+  @media (max-width: $screen-xs-max) {
+    padding: 0;
+  }
+
+  hr {
+    margin: 0;
+  }
+
+  article {
+    position: relative;
+    float: left;
+    height: auto;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 10px;
+    border-bottom: 2px dotted $site-border-color;
+    clear: both;
+
+    .summary {
+      width: 100%;
+      position: relative;
+      float: left;
+    }
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-top: 0;
+      border: none;
+    }
+  }
+
+  ul, ol {
+    list-style-position: inside;
+  }
+}
+
+
+/**
+ * Single article section
+ * Single page section
+ */
+// ----------------------------------------------------------------------------
+// this class should be access grobally
+#content {
+  padding-left: $content-padding-left;
+  padding-top: $content-padding-top;
+
+  @media (max-width: $screen-xs-max) {
+    padding: 0;
+  }
+
+  // h1, h2, h3, h4, h5, h6
+  //   @include link-visited
+
+  h1,
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+
+  h4,
+  h5,
+  h6 {
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+
+  .entry-content {
+    ul,
+    ol {
+      list-style-position: inside;
+
+      li {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .avatar {
+    $aboutme-page-avatar-width: 100px;
+    width: $aboutme-page-avatar-width;
+    float: left;
+    margin-right: 20px;
+    @include border-radius($aboutme-page-avatar-width);
+  }
+}
+
+/**
+ * Archives section
+ */
+// ----------------------------------------------------------------------------
+#archives {
+  h2 {
+    margin: 0;
+    font-size: $font-size-large;
+  }
+
+  .year,
+  .month,
+  .day {
+    padding: 8px 20px;
+  }
+
+  .year {
+    font-size: $font-size-large;
+
+    @media (max-width: $screen-xs-max) {
+      padding: 0;
+      margin: 2px 15px;
+      border-bottom: 1px solid $site-border-color;
+    }
+  }
+
+  .month,
+  .day {
+    font-size: $font-size-base;
+
+    @media (max-width: $screen-xs-max) {
+      padding: 2px 0;
+    }
+  }
+
+  footer {
+    padding: 0;
+    padding-bottom: 25px;
+    height: auto;
+  }
+}
+
+#reading_list {
+  .book {
+    clear: both;
+    margin-bottom: 30px;
+    height: auto;
+    overflow: auto;
+
+    header {
+      font-size: 120%;
+
+      small {
+        font-size: 80%;
+      }
+    }
+
+    img {
+      float: left;
+      margin-right: 20px;
+    }
+  }
+}
+
+
+// aboutme
+.aboutme {
+  $sidebar-avarar-width: 100px;
+
+  .avatar {
+    width: $sidebar-avarar-width;
+    @include border-radius($sidebar-avarar-width);
+  }
+}
+
+/**
+ * Footer section
+ */
+// ----------------------------------------------------------------------------
+footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background: transparent;
+  color: $gray-dark;
+  bottom: 0;
+
+  &.footer {
+    margin-top: 30px;
+    background-color: $gray-dark;
+    color: $theme-bone;
+    height: $site-footer-height;
+  }
+}
+
+/**
+ * Debug override
+ */
+// -----------------------------------------------------------------------------
+#debug {
+  .container,
+  .row {
+    margin: 0;
+    padding: 0;
+
+    > div {
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
