@@ -1,7 +1,10 @@
 # ############# Project files/directories
 tmp/
 build/
-gulpfile.js # due to symlink from gulp-src
+
+# due to symlinked from gulp_src
+gulpfile.js
+build.config.js
 
 # ############ Sass
 .sass-cache/
