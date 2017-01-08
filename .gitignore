@@ -1,6 +1,5 @@
 # ############# Project files/directories
 tmp/
-bin/
 build/
 gulpfile.js # due to symlink from gulp-src
 
