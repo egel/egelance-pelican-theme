@@ -581,7 +581,7 @@ $intro-header-xs-height : $intro-header-sm-height;
 
       /* Small devices (tablets, 768px and down) */
       @media (max-width: $screen-md-min) {
-        font-size: $font-size-huge;
+        font-size: $font-size-huge*1.3;
       }
 
       /* Small devices (phones only 480px and down) */
@@ -601,7 +601,7 @@ $intro-header-xs-height : $intro-header-sm-height;
     &.subheading {
       @include font-lato-300;
       color: $theme-red-solarized;
-      font-size: $font-size-large;
+      font-size: $font-size-large*1.3;
 
       /* Small devices (phones only 480px and less) */
       @media (max-width: $screen-sm-min) {
