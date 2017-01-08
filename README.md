@@ -4,11 +4,24 @@ Modern, minimalistic and well readable theme for
 
 <img src="http://i.imgur.com/k3v695l.png" width="100%" />
 
-## Get your copy
-To download and install theme, you need to switch to `bin/` folder and download
-compiled archiche package. Next unpack it to `<pelican-site>/theme/egelance`,
-add `THEME="theme/egelance"` to your **pelicanconf.py** file, and compile your
-site `pelican content --autoreload`
+## Hot to use it?
+
+> You will need have `npm` + `yarn` installed. If not install it via [`nvm`](https://github.com/creationix/nvm)
+
+Clone theme to your workspace dir
+
+```shell
+cd <your-pelican-blog>/theme # folder with themes for you pelican blog
+mkdir -p egelance
+wet https://github.com/egel/egelance-pelican-theme/blob/master/bin/egelance_pelican_theme_official.zip?raw=true 
+unzip egelance_pelican_theme_official.zip -d ./egelance
+```
+Now you should have unpacked egelance theme into your `<your-pelican-blog>/theme/egelance` folder. 
+
+Next:
+ 
+1.  add `THEME="theme/egelance"` to your **pelicanconf.py** file, and 
+1.  compile your blog with: `pelican content --autoreload`
 
 
 ## Development
