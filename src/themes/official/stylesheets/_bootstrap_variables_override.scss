@@ -19,7 +19,7 @@ $brand-danger:    #d9534f;
 // ## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-$body-bg:               #fff;
+$body-bg: #f8f8f8;
 
 //** Global text color on `<body>`.
 $text-color:            $gray-dark;
@@ -42,14 +42,15 @@ $font-family-base:        $font-family-sans-serif;
 $icon-font-path: "../fonts/";
 //$icon-font-path: "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/fonts/"
 
-$font-size-hulk:     ceil(($font-size-base * 3.4)); // ~18px
-$font-size-huge:     ceil(($font-size-base * 2.9)); // ~18px
-$font-size-bigger:   ceil(($font-size-base * 1.9)); // ~18px
-$font-size-big:      ceil(($font-size-base * 1.5)); // ~18px
-$font-size-large:    ceil(($font-size-base * 1.25)); // ~18px
+$font-size-hulk:     ceil(($font-size-base * 3.4)); // ~61px
+$font-size-huge:     ceil(($font-size-base * 2.9)); // ~52px
+$font-size-bigger:   ceil(($font-size-base * 1.9)); // ~34px
+$font-size-biggi:    ceil(($font-size-base * 1.7)); // ~31px
+$font-size-big:      ceil(($font-size-base * 1.5)); // ~27px
+$font-size-large:    ceil(($font-size-base * 1.25)); // ~22.5px
 $font-size-base:     18px;
-$font-size-small:    ceil(($font-size-base * 0.85)); // ~12px
-$font-size-smaller:  ceil(($font-size-base * 0.65)); // ~12px
+$font-size-small:    ceil(($font-size-base * 0.85)); // ~15.3px
+$font-size-smaller:  ceil(($font-size-base * 0.67)); // ~12px
 
 
 //== Navbar
