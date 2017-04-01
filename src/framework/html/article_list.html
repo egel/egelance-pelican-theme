@@ -5,20 +5,20 @@
     <div class="articles-list">
     {% for article in (articles_page.object_list if articles_page else articles) %}
       <article>
-        <span class="published text-muted">{{ article.locale_date }}</span>
+        <span class="text-muted article-published">{{ article.locale_date }}</span>
         {% if SHOW_DATE_MODIFIED %}
           {% if article.modified %}
-            <span class="published text-muted">· Modified at {{ article.locale_modified }}</span>
+            <span class="text-muted article-modified">· Modified at {{ article.locale_modified }}</span>
           {% endif %}
         {% endif %}
 
         {% if SHOW_ARTICLE_CATEGORY %}
-          <span class="published text-muted"> · Category</span>
-          <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+          <span class="text-muted article-category">· Category</span>
+          <a class="article-category-name" href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
         {% endif %}
 
         {% if SHOW_ARTICLE_READTIME %}
-        <span class="published text-muted"> · {{ article.stats['read_mins'] }} {% if article.stats['read_mins'] == 1 %}minute{% else %}minutes{% endif %}</span>
+        <span class="text-muted article-reading-time">· {{ article.stats['read_mins'] }}&nbsp;{% if article.stats['read_mins'] == 1 %}minute{% else %}minutes{% endif %}</span>
         {% endif %}
         <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
 

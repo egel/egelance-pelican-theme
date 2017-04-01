@@ -2,7 +2,7 @@
 Modern, minimalistic and well readable theme for
 [Pelican][pelican_official_site], Python Static Files Generator.
 
-<img src="http://i.imgur.com/k3v695l.png" width="100%" />
+<img src="http://i.imgur.com/E17OEVY.png" width="100%" />
 
 ## Hot to use it?
 

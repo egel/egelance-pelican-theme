@@ -1,15 +1,16 @@
 /******************************************************************************
  * Sub-theme variables
  */
-$img_path:      '../images/';
-$logo_height:   90px;
-$logo_padding:  7px;
+$page-min-width: 320px;
+$img_path: '../images/';
+$logo_height: 90px;
+$logo_padding:7px;
 
 $header-top-height: 25px;
 $header-top-bottom-padding: ($header-top-height - $line-height-base * $font-size-base)/2 + 1;
 
-$content-padding-top:   20px;
-$content-padding-left:  $content-padding-top;
+$content-padding-top: 20px;
+$content-padding-left: $content-padding-top;
 
 $site-footer-height: auto;
 
@@ -41,15 +42,14 @@ $site-footer-height: auto;
   color: $brand-primary;
 }
 
-
 /******************************************************************************
  *  Body override
  */
-
 html,
 body {
   height: 100%;
   width: 100%;
+  min-width: $page-min-width; // minimal page size
 }
 
 body {
@@ -88,7 +88,6 @@ h5,
 h6 {
   @include font-open-sans-800;
   @include link-visited;
-  margin-top: 2px;
   margin-bottom: 0;
 
   a {
@@ -103,27 +102,6 @@ h6 {
     }
   }
 }
-
-h1 {
-  font-size: 36px
-}
-
-h2 {
-  font-size: 28px
-}
-
-h3 {
-  font-size: 22px
-}
-
-header.page-header,
-h1.page-header,
-h2.page-header,
-h3.page-header {
-  margin: 0;
-  border: none;
-}
-
 
 
 /**
@@ -158,15 +136,6 @@ pre {
   }
 }
 
-.row {
-  margin-top: 10px;
-}
-
-.row-nonmargin-nonpaddign { // FIXME: remove or reduce
-  margin: 0;
-  padding: 0;
-}
-
 .vertical-center {
   min-height: 100%; // Fallback for browsers do NOT support vh unit
   min-height: 100vh; // These two lines are counted as one :-)
@@ -189,10 +158,6 @@ hr {
   }
 }
 
-.display-none { // FIXME: remove or reduce
-  display: none !important
-}
-
 ul {
   list-style-position: inside;
   padding-left: 18px;
@@ -201,6 +166,44 @@ ul {
     p {
       display: inline;
       clear: none;
+    }
+  }
+
+  &.pagination {
+    li {
+      span {
+        color: $text-muted;
+      }
+
+      a {
+        &:link,
+        &:visited {
+          color: $text-muted;
+        }
+
+        &:hover,
+        &:active {
+          color: $brand-primary;
+        }
+      }
+
+      &.active {
+        a {
+          color: #fff;
+
+          &:link,
+          &:visited {
+            background-color: $gray-light;
+            border-color: darken($gray-light, 7%);
+          }
+
+          &:hover,
+          &:active {
+            background-color: $brand-primary;
+            border-color: darken($brand-primary, 7%);
+          }
+        }
+      }
     }
   }
 }
@@ -244,10 +247,12 @@ dl {
 // General settings
 .navbar-brand {
   @include font-satisfy;
-  font-size:       $navbar-brand-font-size;
-  padding:         $navbar-brand-padding/2;
-  padding-left:    $navbar-brand-padding;
-  float:           left;
+  font-size: $navbar-brand-font-size;
+  padding-top: $navbar-brand-padding/2;
+  padding-bottom: $navbar-brand-padding/2;
+  padding-right: $navbar-brand-padding/2;
+  padding-left: $navbar-brand-padding;
+  float: left;
 
   @media (max-width: $screen-sm-min) {
     padding: 10px !important
@@ -262,40 +267,42 @@ dl {
   }
 }
 
-
 #navbar {
   margin-bottom: 0px;
   background-color: transparent;
   border: none;
 
-  ul.nav {
-    @media (max-width: $screen-sm-min) {
-      padding-top: 20px;
-    }
-
-
-    > li {
-      > a {
-        font-size: 14px;
-        font-weight: bold;
-        text-transform: uppercase;
-        height: $navbar-height;
-        padding-top: $navbar-list-padding !important;
-        padding-bottom: $navbar-list-padding !important;
-
-        // &:link, &:visited
-        //   @include link-visited;
-
-        // &:hover, &:active //, &:focus
-        //   @include hover-active-focus;
+  ul {
+    &.nav {
+      @media (max-width: $screen-sm-min) {
+        padding-top: 20px;
       }
-    }
 
-    &.active,
-    &.selected {
-      > a,
-      > a.active {
-        @include hover-active-focus;
+      li {
+        a {
+          font-size: 14px;
+          font-weight: bold;
+          text-transform: uppercase;
+          height: $navbar-height;
+          padding-top: $navbar-list-padding !important;
+          padding-bottom: $navbar-list-padding !important;
+
+          &:link,
+          &:visited {
+            @include link-visited;
+          }
+
+          &:hover,
+          &:active {
+            @include hover-active-focus;
+          }
+        }
+
+        &.selected {
+          a {
+            @include hover-active-focus;
+          }
+        }
       }
     }
   }
@@ -304,8 +311,7 @@ dl {
 nav {
   &.navbar {
     margin-bottom: 0;
-    margin-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px 0;
     border: none;
   }
 }
@@ -361,19 +367,17 @@ nav {
   }
 }
 
-@media (max-width: $screen-sm-min) {
+@media (max-width: $screen-sm-max) {
   .sidebar-tablet {
     display: none !important;
   }
-}
 
-@media (min-width: $screen-sm-min) {
   .sidebar-phone {
-    display: none !important;
+    display: block;
   }
 }
 
-@media (max-width: $screen-xs-min) {
+@media (max-width: $screen-xs-max) {
   .sidebar-tablet {
     display: none !important;
   }
@@ -385,14 +389,10 @@ nav {
 
 
 /* Small devices (tablets, 768px and down) */
-@media (max-width: $screen-md-min) {
+@media (max-width: $screen-sm-min) {
   .navbar {
     .container {
       padding: 0 !important;
-    }
-
-    .navbar-header {
-      margin: 0 !important;
     }
 
     .navbar-collapse {
@@ -406,7 +406,7 @@ nav {
 }
 
 /* Small devices (phones only 480px and less) */
-@media (max-width: $screen-sm-min) {
+@media (max-width: $screen-xs-min) {
   .navbar {
     .container-fluid {
       padding: 0;
@@ -481,7 +481,7 @@ nav {
     }
 
     h1 {
-      font-size: 200%;
+      font-size: 130%;
     }
 
     h3 {
@@ -655,25 +655,19 @@ $intro-header-xs-height : $intro-header-sm-height;
  */
 // ----------------------------------------------------------------------------
 .articles-list {
-  padding-top: $content-padding-top;
-  padding-left: $content-padding-left;
-
-  @media (max-width: $screen-xs-max) {
-    padding: 0;
-  }
-
   hr {
     margin: 0;
   }
 
   article {
     position: relative;
+    display: inline-block;
     float: left;
     height: auto;
     width: 100%;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    margin-bottom: 10px;
+    padding-top: $content-padding-top;
+    padding-bottom: $content-padding-top;
+    margin-bottom: 0;
     border-bottom: 2px dotted $site-border-color;
     clear: both;
 
@@ -683,13 +677,13 @@ $intro-header-xs-height : $intro-header-sm-height;
       float: left;
     }
 
-    &:first-child {
-      padding-top: 0;
+    &:last-child {
+      padding-bottom: 0;
+      border: none;
     }
 
-    &:last-child {
-      padding-top: 0;
-      border: none;
+    h2 {
+      margin: 0;
     }
   }
 
@@ -699,29 +693,76 @@ $intro-header-xs-height : $intro-header-sm-height;
 }
 
 
+$article-meta-elements-space: 6px;
+.tags-dot {
+  &:after {
+    font-family: FontAwesome;
+    content: '\f02c';
+    color: $text-muted;
+    margin-left: $article-meta-elements-space;
+  }
+}
+
+.single-tag {
+  &:not(:last-child) {
+    &:after {
+      content: ",";
+      color: $text-muted;
+    }
+  }
+}
+
+.archives,
+.articles-list,
+.single-article {
+  .article-modified,
+  .article-category,
+  .article-category-name,
+  .article-reading-time,
+  .single-tag,
+  .tags-dot,
+  i.fa {
+    margin-left: $article-meta-elements-space;
+  }
+
+  .article-published {
+    margin-left: 0;
+  }
+
+  .well {
+    margin-bottom: 0;
+    margin-top: $content-padding-top*2;
+
+    ul {
+      margin: 0;
+    }
+
+    &#related-posts{
+      h4 {
+        padding-top: 0;
+        margin-top: 0;
+      }
+    }
+  }
+}
+
 /**
  * Single article section
  * Single page section
  */
 // ----------------------------------------------------------------------------
-// this class should be access grobally
-#content {
-  padding-left: $content-padding-left;
+.regular-page,
+.single-article {
   padding-top: $content-padding-top;
-
-  @media (max-width: $screen-xs-max) {
-    padding: 0;
-  }
-
-  // h1, h2, h3, h4, h5, h6
-  //   @include link-visited
 
   h1,
   h2 {
-    margin-bottom: 20px;
+    margin-top: 0;
+    margin-bottom: $content-padding-top;
   }
 
   h3 {
+    margin: 0;
     padding-top: 30px;
     padding-bottom: 20px;
   }
@@ -729,6 +770,7 @@ $intro-header-xs-height : $intro-header-sm-height;
   h4,
   h5,
   h6 {
+    margin: 0;
     padding-top: 20px;
     padding-bottom: 10px;
   }
@@ -749,8 +791,8 @@ $intro-header-xs-height : $intro-header-sm-height;
     height: auto;
   }
 
+  $aboutme-page-avatar-width: 200px;
   .avatar {
-    $aboutme-page-avatar-width: 100px;
     width: $aboutme-page-avatar-width;
     float: left;
     margin-right: 20px;
@@ -762,25 +804,32 @@ $intro-header-xs-height : $intro-header-sm-height;
  * Archives section
  */
 // ----------------------------------------------------------------------------
-#archives {
+.archives {
+  h1 {
+    padding-bottom: $content-padding-top;
+  }
+
   h2 {
     margin: 0;
-    font-size: $font-size-large;
+    font-size: $font-size-big;
   }
 
   .year,
   .month,
   .day {
-    padding: 8px 20px;
+    display: inline-block;
+    clear: both;
   }
 
   .year {
-    font-size: $font-size-large;
+    p {
+      font-size: $font-size-base;
 
-    @media (max-width: $screen-xs-max) {
-      padding: 0;
-      margin: 2px 15px;
-      border-bottom: 1px solid $site-border-color;
+      @media (max-width: $screen-xs-max) {
+        margin-top: $content-padding-top;
+        font-size: $font-size-bigger;
+        border-bottom: 2px dotted $site-border-color;
+      }
     }
   }
 
@@ -788,8 +837,8 @@ $intro-header-xs-height : $intro-header-sm-height;
   .day {
     font-size: $font-size-base;
 
-    @media (max-width: $screen-xs-max) {
-      padding: 2px 0;
+    @media (max-width: $screen-sm-max) {
+      margin-right: $article-meta-elements-space;
     }
   }
 
@@ -801,6 +850,11 @@ $intro-header-xs-height : $intro-header-sm-height;
 }
 
 #reading_list {
+  h2 {
+    margin-bottom: $content-padding-top;
+    font-size: $font-size-big;
+  }
+
   .book {
     clear: both;
     margin-bottom: 30px;
@@ -825,7 +879,7 @@ $intro-header-xs-height : $intro-header-sm-height;
 
 // aboutme
 .aboutme {
-  $sidebar-avarar-width: 100px;
+  $sidebar-avarar-width: 135px;
 
   .avatar {
     width: $sidebar-avarar-width;
@@ -866,5 +920,44 @@ footer {
       margin: 0;
       padding: 0;
     }
+  }
+}
+
+
+
+
+/**
+ * Theme media
+ */
+// -----------------------------------------------------------------------------
+$navbar-xs-size: 130px;
+$navbar-sm-size: 200px;
+$navbar-md-size: 320px;
+$navbar-lg-size: 400px;
+
+h1 {
+  @media (max-width: $screen-xs-max) {
+    font-size: $font-size-biggi;
+  }
+  @media (min-width: $screen-sm-min) {
+    font-size: $font-size-bigger;
+  }
+}
+
+h2 {
+  @media (max-width: $screen-xs-max) {
+    font-size: $font-size-big;
+  }
+  @media (min-width: $screen-sm-min) {
+    font-size: $font-size-biggi;
+  }
+}
+
+h3 {
+  @media (max-width: $screen-xs-max) {
+    font-size: $font-size-large;
+  }
+  @media (min-width: $screen-sm-min) {
+    font-size: $font-size-big;
   }
 }

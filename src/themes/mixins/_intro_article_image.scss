@@ -1,0 +1,14 @@
+@mixin intro-article-image($image_width, $padding) {
+  position: relative;
+  float:    left;
+
+  p {
+    float: left;
+    margin: 0;
+  }
+
+  img {
+    margin: $padding;
+    width: $image_width
+  }
+}

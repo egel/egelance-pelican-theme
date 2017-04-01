@@ -10,39 +10,39 @@
 {% endblock %}
 
 {% block content %}
-  <section id="content">
+  <section id="content" class="archives">
     <h1>Blog Archives</h1>
-    <div id="archives">
-      {% for year, date_year in dates|groupby('date.year')|sort(reverse=NEWEST_FIRST_ARCHIVES) %}
-        <div class="row">
-          <div class="col-sm-1 year published">{{ year }}</div>
-          <div class="col-sm-11 article-details">
-            {% for month, articles in date_year|groupby('date.month')|sort(reverse=NEWEST_FIRST_ARCHIVES) %}
-              {% for article in articles %}
-                <article>
-                  <div class="row">
-                    <div class="col-md-1 col-sm-2">
-                      <time datetime="{{ article.date }}" pubdate>
-                        <span class="month published">{{ article.date.strftime('%B')[:3] }}</span>
-                        <span class="day published">{{ article.date.strftime('%d') }}</span>
-                      </time>
-                    </div>
-                    <div class="col-md-11 col-sm-10">
-                      <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
-                      <footer>
-                        <span class="categories">posted in
-                          <a class='category' href='{{ SITEURL }}/{{ article.category.url }}'>{{ article.category }}</a>
-                          {% if article.tags %} &middot; {% endif %} {% include 'includes/taglist.html' %}
-                        </span>
-                      </footer>
-                    </div>
-                  </div>
-                </article>
-              {% endfor %}
-            {% endfor %}
-          </div>
+    {% for year, date_year in dates|groupby('date.year')|sort(reverse=NEWEST_FIRST_ARCHIVES) %}
+      <div class="row">
+        <div class="col-xs-12 col-sm-1 year">
+          <p>{{ year }}</p>
         </div>
-      {% endfor %}
-    </div>
+        <div class="col-xs-12 col-sm-11 article-details">
+          {% for month, articles in date_year|groupby('date.month')|sort(reverse=NEWEST_FIRST_ARCHIVES) %}
+            {% for article in articles %}
+              <article>
+                <div class="row">
+                  <div class="col-md-1 col-sm-2">
+                    <time datetime="{{ article.date }}" pubdate>
+                      <span class="month text-muted">{{ article.date.strftime('%B')[:3] }}</span>
+                      <span class="day text-muted">{{ article.date.strftime('%d') }}</span>
+                    </time>
+                  </div>
+                  <div class="col-md-11 col-sm-10">
+                    <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+                    <footer>
+                      <span class="categories text-muted">posted in
+                        <a class='category' href='{{ SITEURL }}/{{ article.category.url }}'>{{ article.category }}</a>
+                        {% if article.tags %}<span class="tags-dot">&middot;</span>{% endif %}{% include 'includes/taglist.html' %}
+                      </span>
+                    </footer>
+                  </div>
+                </div>
+              </article>
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
   </section>
 {% endblock %}
