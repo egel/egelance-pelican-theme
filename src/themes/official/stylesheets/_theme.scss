@@ -407,12 +407,6 @@ nav {
 
 /* Small devices (phones only 480px and less) */
 @media (max-width: $screen-xs-min) {
-  .navbar {
-    .container-fluid {
-      padding: 0;
-    }
-  }
-
   .navbar-brand {
     font-size: $navbar-brand-font-size;
     padding-top: $navbar-brand-padding;
