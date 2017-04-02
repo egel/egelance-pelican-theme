@@ -1,16 +1,13 @@
 /**
  *  Import external fonts
  */
-@import url(https://fonts.googleapis.com/css?family=Lato:300);
-@import url(https://fonts.googleapis.com/css?family=PT+Sans);
-@import url(https://fonts.googleapis.com/css?family=Satisfy);
-@import url(https://fonts.googleapis.com/css?family=Lora);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800);
+@import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800');
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
 
-
-@mixin font-lato-300 {
+@mixin font-lato-400 {
   font-family: 'Lato', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 @mixin font-open-sans-800 {
@@ -18,14 +15,6 @@
   font-weight: 800;
 }
 
-@mixin font-ptsans {
-  font-family: 'PT Sans', sans-serif;
-}
-
 @mixin font-satisfy {
   font-family: 'Satisfy', cursive;
-}
-
-@mixin font-lora {
-  font-family: 'Lora', serif;
 }
